@@ -61,12 +61,25 @@
 
     function init() {
       api.getLoadBalancer($routeParams.loadbalancerId, true).success(success);
+      api.getLoadBalancer($routeParams.loadbalancerId, true).success()
     }
-
+    function get_listener(response) {
+      ctrl.listener = response.listeners
+        
+    }
     function success(response) {
       ctrl.loadbalancer = response;
+      for (var i in response.listeners){var listener_id = response.listeners[i].id;console.log(listener_id);}
+      api.getListener(listener_id).success(get_pool);
     }
+    function get_pool(response) {ctrl.listener = response;console.log(response);
+      api.getPool(response.default_pool_id).success(get_pool_detail);
+      ctrl.pool  = response;
+      console.log(ctrl.pool)
 
+    }
+    function get_pool_detail(response) {console.log(response);ctrl.pool = response;console.log(ctrl.pool)}
+    function set(property) {return angular.bind(null, function setProp(property, value) {ctrl[property] = value;}, property);}
     // Save the active state of the listeners tab in the global window object so it can stay
     // active after reloading the route following an action.
     $scope.$watch(function() {
