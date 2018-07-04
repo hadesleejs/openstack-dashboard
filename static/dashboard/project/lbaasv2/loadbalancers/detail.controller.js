@@ -75,9 +75,10 @@
     function get_pool(response) {ctrl.listener = response;console.log(response);
       api.getPool(response.default_pool_id).success(get_pool_detail);
       ctrl.pool  = response;
-      console.log(ctrl.pool)
-
+      console.log(ctrl.pool);
+      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor)
     }
+    function get_healthmonitor(response) {ctrl.healthmonitor = response;}
     function get_pool_detail(response) {console.log(response);ctrl.pool = response;console.log(ctrl.pool)}
     function set(property) {return angular.bind(null, function setProp(property, value) {ctrl[property] = value;}, property);}
     // Save the active state of the listeners tab in the global window object so it can stay

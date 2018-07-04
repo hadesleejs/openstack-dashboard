@@ -1,79 +1,140 @@
-<div ng-controller="LoadBalancerDetailController as ctrl">
-  <div class="page-header">
+<html>
+ <head></head>
+ <body>
+  <div ng-controller="LoadBalancerDetailController as ctrl">
+   <div class="page-header">
     <ol class="breadcrumb">
-      <li><a href="project/ngloadbalancersv2/"><translate>Load Balancers</translate></a></li>
-      <li class="active">{$ ctrl.loadbalancer.name || ctrl.loadbalancer.id $}</li>
-      <actions allowed="ctrl.actions" type="row" item="ctrl.loadbalancer"
-               ng-if="ctrl.loadbalancer" class="actions_column pull-right"></actions>
+     <li><a href="project/ngloadbalancersv2/">
+       <translate>
+        Load Balancers
+       </translate></a></li>
+     <li class="active">{$ ctrl.loadbalancer.name || ctrl.loadbalancer.id $}</li>
+     <actions allowed="ctrl.actions" type="row" item="ctrl.loadbalancer" ng-if="ctrl.loadbalancer" class="actions_column pull-right"></actions>
     </ol>
-    <hr>
+    <hr />
     <p ng-if="::ctrl.loadbalancer.description">{$ ::ctrl.loadbalancer.description $}</p>
-  </div>
-    <hr>
-  <tabset>
+   </div>
+   <hr />
+   <tabset>
     <tab heading="{$ 'Overview' | translate $}">
-      <div class="row">
-        <div class="col-md-6 detail">
-          <dl class="dl-horizontal">
-              <dt translate>IP Address</dt>
-              <dd>{$ ::ctrl.loadbalancer.vip_address $}</dd>
-              <dt>Operating Status</dt>
-              <dd>{$ ctrl.loadbalancer.operating_status | decode:ctrl.operatingStatus $}</dd>
-              <dt>Provisioning Status</dt>
-              <dd>{$ ctrl.loadbalancer.provisioning_status | decode:ctrl.provisioningStatus $}</dd>
-            <dt translate>Provider</dt>
-            <dd>{$ ::ctrl.loadbalancer.provider $}</dd>
-            <dt translate>Admin State Up</dt>
-            <dd>{$ ctrl.loadbalancer.admin_state_up | yesno $}</dd>
-            <dt translate ng-if="ctrl.loadbalancer.floating_ip !== undefined">Floating IP Address</dt>
-            <dd ng-if="ctrl.loadbalancer.floating_ip !== undefined">{$ ctrl.loadbalancer.floating_ip.ip | noValue:('None' | translate) $}</dd>
-            <dt translate>Load Balancer ID</dt>
-            <dd>{$ ::ctrl.loadbalancer.id $}</dd>
-            <dt translate>Subnet ID</dt>
-            <dd>
-              <a target="_self" ng-href="project/networks/subnets/{$ ::ctrl.loadbalancer.vip_subnet_id $}/detail">{$ ::ctrl.loadbalancer.vip_subnet_id $}</a>
-            </dd>
-            <dt translate>Port ID</dt>
-            <dd>
-              <a target="_self" ng-href="project/networks/ports/{$ ::ctrl.loadbalancer.vip_port_id $}/detail">{$ ::ctrl.loadbalancer.vip_port_id $}</a>
-            </dd>
-          </dl>
-        </div>
+     <div class="row">
+      <div class="col-md-6 detail">
+       <dl class="dl-horizontal">
+        <dt translate="">
+         IP Address
+        </dt>
+        <dd>
+         {$ ::ctrl.loadbalancer.vip_address $}
+        </dd>
+        <dt>
+         Operating Status
+        </dt>
+        <dd>
+         {$ ctrl.loadbalancer.operating_status | decode:ctrl.operatingStatus $}
+        </dd>
+        <dt>
+         Provisioning Status
+        </dt>
+        <dd>
+         {$ ctrl.loadbalancer.provisioning_status | decode:ctrl.provisioningStatus $}
+        </dd>
+        <dt translate="">
+         Provider
+        </dt>
+        <dd>
+         {$ ::ctrl.loadbalancer.provider $}
+        </dd>
+        <dt translate="">
+         Admin State Up
+        </dt>
+        <dd>
+         {$ ctrl.loadbalancer.admin_state_up | yesno $}
+        </dd>
+        <dt translate="" ng-if="ctrl.loadbalancer.floating_ip !== undefined">
+         Floating IP Address
+        </dt>
+        <dd ng-if="ctrl.loadbalancer.floating_ip !== undefined">
+         {$ ctrl.loadbalancer.floating_ip.ip | noValue:('None' | translate) $}
+        </dd>
+        <dt translate="">
+         Load Balancer ID
+        </dt>
+        <dd>
+         {$ ::ctrl.loadbalancer.id $}
+        </dd>
+        <dt translate="">
+         Subnet ID
+        </dt>
+        <dd>
+         <a target="_self" ng-href="project/networks/subnets/{$ ::ctrl.loadbalancer.vip_subnet_id $}/detail">{$ ::ctrl.loadbalancer.vip_subnet_id $}</a>
+        </dd>
+        <dt translate="">
+         Port ID
+        </dt>
+        <dd>
+         <a target="_self" ng-href="project/networks/ports/{$ ::ctrl.loadbalancer.vip_port_id $}/detail">{$ ::ctrl.loadbalancer.vip_port_id $}</a>
+        </dd>
+       </dl>
       </div>
+     </div>
     </tab>
     <tab heading="{$ 'Listeners' | translate $}" active="ctrl.listenersTabActive">
-      <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
+     <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
     </tab>
-  </tabset>
-    <hr>
-  <table class="table table-detail">
-      <span class="table-title">资源池</span>
-   <thead>
-
-    <tr>
-
-     <th class="rsp-p1"  translate>Name</th>
-     <th class="rsp-p1"  translate>Load Balancer Algorithm</th>
-     <th class="rsp-p1"  translate>Session Persistence</th>
-     <th class="rsp-p1"  translate>Admin State Up</th>
-     <th class="rsp-p1"  translate>Health Monitor ID</th>
-     <th class="rsp-p1"  translate>Protocol</th>
-     <th class="rsp-p1"  translate>Tenant ID</th>
-    </tr>
-   </thead>
-   <tbody>
-
-      <tr >
-          <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}" >{$ ctrl.pool.name $}</a></td>
-          <td class="rsp-p1">{$ ctrl.pool.lb_algorithm $}</td>
-          <td class="rsp-p1">{$ ctrl.pool.session_persistence | noValue:('None' | translate)  $}</td>
-          <td class="rsp-p1">{$ ctrl.pool.admin_state_up $}</td>
-          <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}" >{$ ctrl.pool.healthmonitor_id $}</a></td>
-          <td class="rsp-p1">{$ ctrl.pool.protocol $}</td>
-          <td class="rsp-p1">{$ ctrl.pool.tenant_id $}</td>
-      </tr>
-
-   </tbody>
-  </table>
-    <hr>
-</div>
+   </tabset>
+   <hr />
+   <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
+   <table>
+   </table>
+   <span class="table-title">资源池</span>
+   <table class="table table-detail">
+    <thead>
+     <tr>
+      <th class="rsp-p1" translate="">Name</th>
+      <th class="rsp-p1" translate="">Load Balancer Algorithm</th>
+      <th class="rsp-p1" translate="">Session Persistence</th>
+      <th class="rsp-p1" translate="">Admin State Up</th>
+      <th class="rsp-p1" translate="">Health Monitor ID</th>
+      <th class="rsp-p1" translate="">Protocol</th>
+      <th class="rsp-p1" translate="">Tenant ID</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}">{$ ctrl.pool.name $}</a></td>
+      <td class="rsp-p1">{$ ctrl.pool.lb_algorithm $}</td>
+      <td class="rsp-p1">{$ ctrl.pool.session_persistence | noValue:('None' | translate) $}</td>
+      <td class="rsp-p1">{$ ctrl.pool.admin_state_up $}</td>
+      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.pool.healthmonitor_id $}</a></td>
+      <td class="rsp-p1">{$ ctrl.pool.protocol $}</td>
+      <td class="rsp-p1">{$ ctrl.pool.tenant_id $}</td>
+     </tr>
+    </tbody>
+   </table>
+   <hr />
+   <hr />
+   <span class="table-title">健康监视器</span>
+   <table class="table table-detail">
+    <thead>
+     <tr>
+      <th class="rsp-p1" translate="">ID</th>
+      <th class="rsp-p1" translate="">Monitor Type</th>
+      <th class="rsp-p1" translate="">Health Check Interval</th>
+      <th class="rsp-p1" translate="">Retry Count Before Markdown</th>
+      <th class="rsp-p1" translate="">Timeout</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.healthmonitor.id $}</a></td>
+      <td class="rsp-p1">{$ ctrl.healthmonitor.type $}</td>
+      <td class="rsp-p1">{$ ctrl.healthmonitor.delay $}</td>
+      <td class="rsp-p1">{$ ctrl.healthmonitor.max_retries $}</td>
+      <td class="rsp-p1">{$ ctrl.healthmonitor.timeout $}</td>
+     </tr>
+    </tbody>
+   </table>
+   <hr />
+  </div>
+ </body>
+</html>
