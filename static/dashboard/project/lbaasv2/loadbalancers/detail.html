@@ -83,7 +83,6 @@
     </tab>
    </tabset>
    <hr />
-   <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
    <table>
    </table>
    <span class="table-title">资源池</span>
@@ -131,6 +130,29 @@
       <td class="rsp-p1">{$ ctrl.healthmonitor.delay $}</td>
       <td class="rsp-p1">{$ ctrl.healthmonitor.max_retries $}</td>
       <td class="rsp-p1">{$ ctrl.healthmonitor.timeout $}</td>
+     </tr>
+    </tbody>
+   </table>
+   <hr />
+         </table>
+   <hr />
+   <hr />
+   <span class="table-title">监听器</span>
+   <table class="table table-detail">
+    <thead>
+     <tr>
+      <th class="rsp-p1" translate="">Name</th>
+      <th class="rsp-p1" translate="">Description</th>
+      <th class="rsp-p1" translate="">Protocol</th>
+      <th class="rsp-p1" translate="">Port</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="rsp-p1"><a ng-href="project/ngloadbalancersv2/{$ ::ctrl.loadbalancer.id $}/listeners/{$ ::ctrl.listener.id $}">{$ ::(ctrl.listener.name || ctrl.listener.id) $}</a></td>
+      <td class="rsp-p1">{$ ctrl.listener.description |  noValue:('None' | translate)  $}</td>
+      <td class="rsp-p1">{$ ctrl.listener.protocol $}</td>
+      <td class="rsp-p1">{$ ctrl.listener.protocol_port $}</td>
      </tr>
     </tbody>
    </table>

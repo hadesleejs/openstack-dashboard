@@ -108,5 +108,29 @@
    </tbody>
   </table>
     <hr>
+    <table>
+           <thead>
+
+    <tr>
+
+     <th class="rsp-p1"  translate>Name</th>
+     <th class="rsp-p1"  translate>Monitor Type</th>
+     <th class="rsp-p1"  translate>Health Check Interval</th>
+     <th class="rsp-p1"  translate>Retry Count Before Markdown</th>
+     <th class="rsp-p1"  translate>Timeout</th>
+    </tr>
+   </thead>
+   <tbody>
+
+      <tr >
+          <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}" >{$ ctrl.healthmonitor.id $}</a></td>
+          <td class="rsp-p1">{$ ctrl.healthmonitor.type $}</td>
+          <td class="rsp-p1">{$ ctrl.healthmonitor.delay  $}</td>
+          <td class="rsp-p1">{$ ctrl.healthmonitor.max_retries $}</td>
+          <td class="rsp-p1">{$ ctrl.healthmonitor.timeout $}</td>
+      </tr>
+
+   </tbody>
+    </table>
 
 </div>
