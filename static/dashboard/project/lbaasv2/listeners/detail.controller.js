@@ -53,6 +53,7 @@
       api.getLoadBalancer($routeParams.loadbalancerId).success(set('loadbalancer'));
     }
 
+
     function set(property) {
       return angular.bind(null, function setProp(property, value) {
         ctrl[property] = value;

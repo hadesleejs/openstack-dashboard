@@ -49,6 +49,7 @@
     api, rowActions, loadBalancersService, $routeParams, $window, $scope
   ) {
     var ctrl = this;
+    $scope.isShow = true;
 
     ctrl.actions = rowActions.actions;
     ctrl.operatingStatus = loadBalancersService.operatingStatus;
@@ -76,9 +77,13 @@
       api.getPool(response.default_pool_id).success(get_pool_detail);
       ctrl.pool  = response;
       console.log(ctrl.pool);
-      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor)
+      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor);
+      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).error(get_healthmonitor_error);
+
     }
-    function get_healthmonitor(response) {ctrl.healthmonitor = response;}
+
+    function get_healthmonitor(response) {ctrl.healthmonitor = response;console.log(response)}
+    function get_healthmonitor_error() {$scope.isShow = false;}
     function get_pool_detail(response) {console.log(response);ctrl.pool = response;console.log(ctrl.pool)}
     function set(property) {return angular.bind(null, function setProp(property, value) {ctrl[property] = value;}, property);}
     // Save the active state of the listeners tab in the global window object so it can stay

@@ -14,22 +14,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1269">
-              <caret line="97" column="47" lean-forward="false" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="47" />
+            <state relative-caret-position="549">
+              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="159" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="878">
+              <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+        <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="938">
-              <caret line="78" column="86" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="86" />
-              <folding />
+            <state relative-caret-position="900">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,7 +59,7 @@
       <file leaf-file-name="table.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
+            <state relative-caret-position="4260">
               <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="79" />
               <folding />
             </state>
@@ -79,6 +101,7 @@
       <find>35357</find>
       <find>st-table</find>
       <find>Tenant ID</find>
+      <find>HHH</find>
     </findStrings>
     <dirStrings>
       <dir>D:\cloudsight\openstack-dashboard</dir>
@@ -92,11 +115,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/test.js" />
-        <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail_detail.html" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail-bak.html" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html" />
+        <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.controller.js" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html" />
+        <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js" />
       </list>
     </option>
   </component>
@@ -331,14 +355,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="159" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12420">
@@ -367,14 +383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/locale/zh_CN/LC_MESSAGES/django.mo">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -391,18 +399,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="938">
-          <caret line="78" column="86" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="86" />
+        <state relative-caret-position="4260">
+          <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="159" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1269">
-          <caret line="97" column="47" lean-forward="false" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="47" />
+        <state relative-caret-position="549">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="878">
+          <caret line="85" column="62" lean-forward="false" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
           <folding />
         </state>
       </provider>
