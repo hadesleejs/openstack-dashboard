@@ -1,0 +1,27 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  {% if ErrorState %}
+    <h3>{% trans "Error:" %}</h3>
+    <p>{% trans "The volume is in a state not allowd to rollback, fix the volume status before try again" %}</p>
+  {% elif attached %}
+    <h3>{% trans "Notice!!:" %}</h3>
+    <p>{% trans "The volume is now attached to an instance, rollback cannot be performed here, you must perform the rollback from the instance's snapshot" %}</p>
+  {% else %}
+    <h3>{% trans "Description:" %}</h3>
+    <p>{% trans "Rollback the instance to a previously saved snapshot" %}</p>
+  {% endif %}
+
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:project:volumes:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  {% if attached %}
+    <!--input class="btn btn-warning"  type="submit" value="{% trans "Create Volume Snapshot (Force)" %}" /-->
+  {% elif ErrorState %}
+    <!--input class="btn btn-warning"  type="submit" value="{% trans "Create Volume Snapshot (Force)" %}" /-->
+  {% else %}
+    <input class="btn btn-primary" type="submit" value="{% trans "Rollback Volume Snapshot" %}" />
+  {% endif %}
+{% endblock %}
