@@ -21,10 +21,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
+            <state relative-caret-position="878">
               <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -33,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1320">
@@ -383,16 +383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/xstatic/pkg/angular_gettext/data/angular-gettext.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="954">
@@ -436,6 +426,16 @@
           <folding>
             <element signature="n#ol#0;n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#tabset#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="878">
+          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
