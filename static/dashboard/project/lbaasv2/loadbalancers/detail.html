@@ -104,7 +104,7 @@
       <td class="rsp-p1">{$ ctrl.pool.lb_algorithm $}</td>
       <td class="rsp-p1">{$ ctrl.pool.session_persistence | noValue:('None' | translate) $}</td>
       <td class="rsp-p1">{$ ctrl.pool.admin_state_up $}</td>
-      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.pool.healthmonitor_id $}</a></td>
+      <td class="rsp-p1"><a ng-show="isShow" target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.pool.healthmonitor_id  |  noValue:('None' | translate) $}</a></td>
       <td class="rsp-p1">{$ ctrl.pool.protocol $}</td>
       <td class="rsp-p1">{$ ctrl.pool.tenant_id $}</td>
      </tr>

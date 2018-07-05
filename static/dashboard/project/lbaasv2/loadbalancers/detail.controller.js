@@ -77,8 +77,12 @@
       api.getPool(response.default_pool_id).success(get_pool_detail);
       ctrl.pool  = response;
       console.log(ctrl.pool);
-      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor);
-      api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).error(get_healthmonitor_error);
+      if(ctrl.pool.healthmonitor_id){
+              api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor);
+      }else {
+        $scope.isShow=false;
+      }
+
 
     }
 
