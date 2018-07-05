@@ -13,21 +13,35 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="true">
+    <leaf>
+      <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+            <state relative-caret-position="1478">
+              <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20180705101809.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/20180705101809.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20180705095950.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/20180705095950.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="table.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
+            <state relative-caret-position="909">
               <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
               <folding />
             </state>
@@ -39,7 +53,24 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1530758942118" expanded="true" signature="307777:307848" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="307862:307886" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="351291:351335" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="408467:408484" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="485041:485058" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="495461:495477" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="538294:538300" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="555116:555123" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="555251:555258" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="639576:639582" ph=" " />
+                <marker date="1530758942118" expanded="true" signature="659532:659539" ph="«" />
+                <marker date="1530758942118" expanded="true" signature="659614:659621" ph="»" />
+                <marker date="1530758942118" expanded="true" signature="729720:729738" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="729762:729770" ph="…" />
+                <marker date="1530758942118" expanded="true" signature="861204:861222" ph="..." />
+                <marker date="1530758942118" expanded="true" signature="1020687:1020695" ph="…" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +78,8 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2675">
-              <caret line="107" column="54" lean-forward="false" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
+            <state relative-caret-position="1604">
+              <caret line="121" column="70" lean-forward="false" selection-start-line="121" selection-start-column="70" selection-end-line="121" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -131,37 +162,7 @@
             <path>
               <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="lbaasv2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="lbaasv2" type="462c0819:PsiDirectoryNode" />
-              <item name="loadbalancers" type="462c0819:PsiDirectoryNode" />
+              <item name="bak" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -179,6 +180,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\cloudsight\openstack-dashboard\bak" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\cloudsight\openstack-dashboard\bak" />
     </key>
@@ -236,7 +240,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -244,7 +248,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -252,12 +256,25 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -293,6 +310,162 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/test/test_data/keystone_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="78" column="57" lean-forward="false" selection-start-line="78" selection-start-column="57" selection-end-line="78" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2176">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="182" column="18" lean-forward="false" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/xstatic/pkg/angular_gettext/data/angular-gettext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="351" column="0" lean-forward="false" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/pools/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="22" column="80" lean-forward="false" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12420">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/healthmonitors/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail-bak.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1124">
+          <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/locale/zh_CN/LC_MESSAGES/django.mo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/locale/zh_CN/LC_MESSAGES/djangojs.mo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="86" column="1766" lean-forward="false" selection-start-line="86" selection-start-column="1766" selection-end-line="86" selection-end-column="1766" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4260">
+          <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bak/0847a58faa91.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="25155" column="51" lean-forward="false" selection-start-line="25155" selection-start-column="51" selection-end-line="25155" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bak/84757e8f556f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1530758942118" expanded="true" signature="307777:307848" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="307862:307886" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="351291:351335" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="408467:408484" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="485041:485058" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="495461:495477" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="538294:538300" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555116:555123" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555251:555258" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="639576:639582" ph=" " />
+            <marker date="1530758942118" expanded="true" signature="659532:659539" ph="«" />
+            <marker date="1530758942118" expanded="true" signature="659614:659621" ph="»" />
+            <marker date="1530758942118" expanded="true" signature="729720:729738" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="729762:729770" ph="…" />
+            <marker date="1530758942118" expanded="true" signature="861204:861222" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="1020687:1020695" ph="…" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="909">
+          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1604">
+          <caret line="121" column="70" lean-forward="true" selection-start-line="121" selection-start-column="70" selection-end-line="121" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1478">
+          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -313,7 +486,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1530758942118" expanded="true" signature="307777:307848" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="307862:307886" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="351291:351335" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="408467:408484" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="485041:485058" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="495461:495477" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="538294:538300" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555116:555123" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555251:555258" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="639576:639582" ph=" " />
+            <marker date="1530758942118" expanded="true" signature="659532:659539" ph="«" />
+            <marker date="1530758942118" expanded="true" signature="659614:659621" ph="»" />
+            <marker date="1530758942118" expanded="true" signature="729720:729738" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="729762:729770" ph="…" />
+            <marker date="1530758942118" expanded="true" signature="861204:861222" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="1020687:1020695" ph="…" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -421,8 +611,8 @@
     <entry file="file://$PROJECT_DIR$/bak/0847a58faa91.js" />
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2675">
-          <caret line="107" column="54" lean-forward="false" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
+        <state relative-caret-position="1604">
+          <caret line="121" column="70" lean-forward="false" selection-start-line="121" selection-start-column="70" selection-end-line="121" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -431,13 +621,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1530758942118" expanded="true" signature="307777:307848" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="307862:307886" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="351291:351335" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="408467:408484" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="485041:485058" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="495461:495477" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="538294:538300" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555116:555123" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="555251:555258" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="639576:639582" ph=" " />
+            <marker date="1530758942118" expanded="true" signature="659532:659539" ph="«" />
+            <marker date="1530758942118" expanded="true" signature="659614:659621" ph="»" />
+            <marker date="1530758942118" expanded="true" signature="729720:729738" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="729762:729770" ph="…" />
+            <marker date="1530758942118" expanded="true" signature="861204:861222" ph="..." />
+            <marker date="1530758942118" expanded="true" signature="1020687:1020695" ph="…" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
+        <state relative-caret-position="909">
           <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
           <folding />
         </state>
@@ -445,10 +652,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+        <state relative-caret-position="1478">
+          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/20180705101809.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/20180705095950.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
