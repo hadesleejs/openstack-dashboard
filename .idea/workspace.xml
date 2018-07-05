@@ -13,12 +13,12 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="detail.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2018">
-              <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+            <state relative-caret-position="689">
+              <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -27,7 +27,7 @@
       <file leaf-file-name="table.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="909">
+            <state relative-caret-position="1125">
               <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
               <folding />
             </state>
@@ -39,24 +39,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1530753368281" expanded="true" signature="307777:307848" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="307862:307886" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="351291:351335" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="408467:408484" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="485041:485058" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="495461:495477" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="538294:538300" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="555116:555123" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="555251:555258" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="639576:639582" ph=" " />
-                <marker date="1530753368281" expanded="true" signature="659532:659539" ph="«" />
-                <marker date="1530753368281" expanded="true" signature="659614:659621" ph="»" />
-                <marker date="1530753368281" expanded="true" signature="729720:729738" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="729762:729770" ph="…" />
-                <marker date="1530753368281" expanded="true" signature="861204:861222" ph="..." />
-                <marker date="1530753368281" expanded="true" signature="1020687:1020695" ph="…" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +47,7 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
+            <state relative-caret-position="2675">
               <caret line="107" column="54" lean-forward="false" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
               <folding />
             </state>
@@ -253,8 +236,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -311,6 +293,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1475">
+          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bak/84757e8f556f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2675">
+          <caret line="107" column="54" lean-forward="false" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/test/test_data/keystone_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -339,13 +353,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/xstatic/pkg/angular_gettext/data/angular-gettext.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="351" column="0" lean-forward="false" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/xstatic/pkg/angular_gettext/data/angular-gettext.js" />
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/pools/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -410,17 +418,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bak/0847a58faa91.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="25155" column="51" lean-forward="false" selection-start-line="25155" selection-start-column="51" selection-end-line="25155" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bak/0847a58faa91.js" />
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
+        <state relative-caret-position="2675">
           <caret line="107" column="54" lean-forward="false" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
           <folding />
         </state>
@@ -430,30 +431,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1530753368281" expanded="true" signature="307777:307848" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="307862:307886" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="351291:351335" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="408467:408484" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="485041:485058" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="495461:495477" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="538294:538300" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="555116:555123" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="555251:555258" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="639576:639582" ph=" " />
-            <marker date="1530753368281" expanded="true" signature="659532:659539" ph="«" />
-            <marker date="1530753368281" expanded="true" signature="659614:659621" ph="»" />
-            <marker date="1530753368281" expanded="true" signature="729720:729738" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="729762:729770" ph="…" />
-            <marker date="1530753368281" expanded="true" signature="861204:861222" ph="..." />
-            <marker date="1530753368281" expanded="true" signature="1020687:1020695" ph="…" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/table.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="909">
+        <state relative-caret-position="1125">
           <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="32" />
           <folding />
         </state>
@@ -461,8 +445,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2018">
-          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="689">
+          <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
           <folding />
         </state>
       </provider>
