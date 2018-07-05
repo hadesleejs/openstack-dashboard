@@ -64,19 +64,22 @@
       api.getLoadBalancer($routeParams.loadbalancerId, true).success(success);
       api.getLoadBalancer($routeParams.loadbalancerId, true).success()
     }
-    function get_listener(response) {
-      ctrl.listener = response.listeners
-        
-    }
+
     function success(response) {
       ctrl.loadbalancer = response;
-      for (var i in response.listeners){var listener_id = response.listeners[i].id;console.log(listener_id);}
-      api.getListener(listener_id).success(get_pool);
+      for (var i in response.listeners){
+        api.getListener(response.listeners[i].id).success(get_listener);
+      };
+      for (var i in response.pool){
+        api.getPool(response.pool[i].id,true).success(get_pool);
+      };
     }
-    function get_pool(response) {ctrl.listener = response;console.log(response);
-      api.getPool(response.default_pool_id).success(get_pool_detail);
+    function get_listener(response) {
+      ctrl.listener = response
+
+    }
+    function get_pool(response) {
       ctrl.pool  = response;
-      console.log(ctrl.pool);
       if(ctrl.pool.healthmonitor_id){
               api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor);
       }else {
@@ -85,7 +88,6 @@
 
 
     }
-
     function get_healthmonitor(response) {ctrl.healthmonitor = response;console.log(response)}
     function get_healthmonitor_error() {$scope.isShow = false;}
     function get_pool_detail(response) {console.log(response);ctrl.pool = response;console.log(ctrl.pool)}
