@@ -11,14 +11,10 @@
      <li class="active">{$ ctrl.loadbalancer.name || ctrl.loadbalancer.id $}</li>
      <actions allowed="ctrl.actions" type="row" item="ctrl.loadbalancer" ng-if="ctrl.loadbalancer" class="actions_column pull-right"></actions>
     </ol>
-    <hr />
     <p ng-if="::ctrl.loadbalancer.description">{$ ::ctrl.loadbalancer.description $}</p>
    </div>
-   <hr />
-   <tabset>
-    <tab heading="{$ 'Overview' | translate $}">
-     <div class="row">
-      <div class="col-md-6 detail">
+   <h3>概况</h3>
+             <div class="info detail">
        <dl class="dl-horizontal">
         <dt translate="">
          IP Address
@@ -75,16 +71,15 @@
          <a target="_self" ng-href="project/networks/ports/{$ ::ctrl.loadbalancer.vip_port_id $}/detail">{$ ::ctrl.loadbalancer.vip_port_id $}</a>
         </dd>
        </dl>
-      </div>
-     </div>
-    </tab>
-    <tab heading="{$ 'Listeners' | translate $}" active="ctrl.listenersTabActive">
+
+</div>
+
+   <tabset>
+    <tab heading="{$ ctrl.listener.name | translate $}" active="ctrl.listenersTabActive">
      <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
     </tab>
    </tabset>
-   <hr />
-   <table>
-   </table>
+   <!-- <hr />
    <span class="table-title">资源池</span>
    <table class="table table-detail">
     <thead>
@@ -134,7 +129,6 @@
     </tbody>
    </table>
    <hr ng-show="isShow" />
-         </table>
    <hr />
    <hr />
    <span class="table-title">监听器</span>
@@ -156,7 +150,7 @@
      </tr>
     </tbody>
    </table>
-   <hr />
+   <hr /> -->
   </div>
  </body>
 </html>

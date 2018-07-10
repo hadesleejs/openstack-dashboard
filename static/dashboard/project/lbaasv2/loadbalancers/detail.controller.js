@@ -50,7 +50,6 @@
   ) {
     var ctrl = this;
     $scope.isShow = true;
-
     ctrl.actions = rowActions.actions;
     ctrl.operatingStatus = loadBalancersService.operatingStatus;
     ctrl.provisioningStatus = loadBalancersService.provisioningStatus;

@@ -9,7 +9,35 @@
     TODO(jpomero): This table pattern does not allow for extensibility and should be revisited
     once horizon implements a better one.
    -->
-
+   <h3>概况</h3>
+    <div class="info detail">
+       <dl class="dl-horizontal">
+        <dt translate="">
+         Name
+        </dt>
+        <dd>
+         {$ ::ctrl.listener.name $}
+        </dd>
+        <dt>
+         Description
+        </dt>
+        <dd>
+         {$ ctrl.listener.description | noValue:('None' | translate) $}
+        </dd>
+        <dt>
+         Protocol
+        </dt>
+        <dd>
+         {$ ctrl.listener.protocol $}
+        </dd>
+        <dt translate="">
+         Port
+        </dt>
+        <dd>
+         {$ ::ctrl.listener.protocol_port  $}
+        </dd>
+       </dl>
+    </div>
   <thead>
     <tr>
       <!--
@@ -17,9 +45,7 @@
         This is where batch actions like searching, creating, and deleting.
       -->
       <th colspan="7" class="search-header">
-        <hz-search-bar icon-classes="fa-search">
           <actions allowed="table.batchActions.actions" type="batch"></actions>
-        </hz-search-bar>
       </th>
     </tr>
 
@@ -93,20 +119,36 @@
         <div class="row">
           <dl class="col-sm-2">
             <dt translate>ID</dt>
-            <dd>{$ ::item.id $}</dd>
+            <dd>{$ ::ctrl.pool.id $}</dd>
           </dl>
           <dl class="col-sm-2">
             <dt translate>Admin State Up</dt>
-            <dd>{$ ::item.admin_state_up | yesno $}</dd>
+            <dd>{$ ::ctrl.pool.admin_state_up | yesno $}</dd>
           </dl>
           <dl class="col-sm-2">
-            <dt translate>Connection Limit</dt>
-            <dd>{$ ::item.connection_limit | limit $}</dd>
+            <dt translate>Protocol</dt>
+            <dd>{$ ::ctrl.pool.protocol $}</dd>
           </dl>
+            <!--
           <dl class="col-sm-2">
-            <dt translate>Default Pool ID</dt>
-            <dd>{$ ::item.default_pool_id | noValue $}</dd>
+            <dt translate>Load Balancer Algorithm</dt>
+            <dd>{$ ::ctrl.pool.lb_algorithm $}</dd>
           </dl>
+          -->
+                      <dl class="col-sm-2">
+            <dt translate>负载均衡算法</dt>
+            <dd>{$ ::ctrl.pool.lb_algorithm $}</dd>
+          </dl>
+                      <dl class="col-sm-2">
+            <dt translate>Session Persistence</dt>
+            <dd>{$ ::ctrl.pool.session_persistence | noValue:('None' | translate) $}</dd>
+          </dl>
+                      <dl class="col-sm-2">
+            <dt translate>Health Monitor ID</dt>
+            <dd>{$ ::ctrl.pool.healthmonitor_id  $}</dd>
+          </dl>
+
+
         </div>
 
       </td>
