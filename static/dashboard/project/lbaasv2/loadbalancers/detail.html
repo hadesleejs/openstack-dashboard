@@ -23,13 +23,13 @@
          {$ ::ctrl.loadbalancer.vip_address $}
         </dd>
         <dt>
-         Operating Status
+         运行状态
         </dt>
         <dd>
          {$ ctrl.loadbalancer.operating_status | decode:ctrl.operatingStatus $}
         </dd>
         <dt>
-         Provisioning Status
+         供应状态
         </dt>
         <dd>
          {$ ctrl.loadbalancer.provisioning_status | decode:ctrl.provisioningStatus $}
@@ -71,86 +71,11 @@
          <a target="_self" ng-href="project/networks/ports/{$ ::ctrl.loadbalancer.vip_port_id $}/detail">{$ ::ctrl.loadbalancer.vip_port_id $}</a>
         </dd>
        </dl>
-
-</div>
-
-   <tabset>
-    <tab heading="{$ ctrl.listener.name | translate $}" active="ctrl.listenersTabActive">
-     <ng-include src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
-    </tab>
-   </tabset>
-   <!-- <hr />
-   <span class="table-title">资源池</span>
-   <table class="table table-detail">
-    <thead>
-     <tr>
-      <th class="rsp-p1" translate="">Name</th>
-      <th class="rsp-p1" translate="">Load Balancer Algorithm</th>
-      <th class="rsp-p1" translate="">Session Persistence</th>
-      <th class="rsp-p1" translate="">Admin State Up</th>
-      <th class="rsp-p1" translate="">Health Monitor ID</th>
-      <th class="rsp-p1" translate="">Protocol</th>
-      <th class="rsp-p1" translate="">Tenant ID</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}">{$ ctrl.pool.name $}</a></td>
-      <td class="rsp-p1">{$ ctrl.pool.lb_algorithm $}</td>
-      <td class="rsp-p1">{$ ctrl.pool.session_persistence | noValue:('None' | translate) $}</td>
-      <td class="rsp-p1">{$ ctrl.pool.admin_state_up $}</td>
-      <td class="rsp-p1"><a ng-show="isShow" target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.pool.healthmonitor_id  |  noValue:('None' | translate) $}</a></td>
-      <td class="rsp-p1">{$ ctrl.pool.protocol $}</td>
-      <td class="rsp-p1">{$ ctrl.pool.tenant_id $}</td>
-     </tr>
-    </tbody>
-   </table>
-   <hr ng-show="isShow" />
-   <hr ng-show="isShow" />
-   <span class="table-title" ng-show="isShow" >健康监视器</span>
-   <table class="table table-detail" ng-show="isShow">
-    <thead>
-     <tr>
-      <th class="rsp-p1" translate="">ID</th>
-      <th class="rsp-p1" translate="">Monitor Type</th>
-      <th class="rsp-p1" translate="">Health Check Interval</th>
-      <th class="rsp-p1" translate="">Retry Count Before Markdown</th>
-      <th class="rsp-p1" translate="">Timeout</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td class="rsp-p1"><a target="_self" ng-href="project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ctrl.listener.id $}/pools/{$ ::ctrl.pool.id $}/healthmonitors/{$ ::ctrl.pool.healthmonitor_id$}">{$ ctrl.healthmonitor.id $}</a></td>
-      <td class="rsp-p1">{$ ctrl.healthmonitor.type $}</td>
-      <td class="rsp-p1">{$ ctrl.healthmonitor.delay $}</td>
-      <td class="rsp-p1">{$ ctrl.healthmonitor.max_retries $}</td>
-      <td class="rsp-p1">{$ ctrl.healthmonitor.timeout $}</td>
-     </tr>
-    </tbody>
-   </table>
-   <hr ng-show="isShow" />
-   <hr />
-   <hr />
-   <span class="table-title">监听器</span>
-   <table class="table table-detail">
-    <thead>
-     <tr>
-      <th class="rsp-p1" translate="">Name</th>
-      <th class="rsp-p1" translate="">Description</th>
-      <th class="rsp-p1" translate="">Protocol</th>
-      <th class="rsp-p1" translate="">Port</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td class="rsp-p1"><a ng-href="project/ngloadbalancersv2/{$ ::ctrl.loadbalancer.id $}/listeners/{$ ::ctrl.listener.id $}">{$ ::(ctrl.listener.name || ctrl.listener.id) $}</a></td>
-      <td class="rsp-p1">{$ ctrl.listener.description |  noValue:('None' | translate)  $}</td>
-      <td class="rsp-p1">{$ ctrl.listener.protocol $}</td>
-      <td class="rsp-p1">{$ ctrl.listener.protocol_port $}</td>
-     </tr>
-    </tbody>
-   </table>
-   <hr /> -->
+             </div>
+        <tabset>
+            <tab heading="{$ tab.name $}" ng-repeat="tab in ctrl.listeners" active="tab.active" disabled="tab.disabled">
+                <ng-include  src="'static/dashboard/project/lbaasv2/listeners/table.html'"></ng-include>
+        </tabset>
   </div>
  </body>
 </html>

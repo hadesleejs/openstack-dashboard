@@ -9,45 +9,37 @@
     TODO(jpomero): This table pattern does not allow for extensibility and should be revisited
     once horizon implements a better one.
    -->
-   <h3>概况</h3>
+   <h3>监听器概况</h3>
     <div class="info detail">
        <dl class="dl-horizontal">
         <dt translate="">
          Name
         </dt>
         <dd>
-         {$ ::ctrl.listener.name $}
+         {$ ::tab.name $}
         </dd>
         <dt>
-         Description
+         描述
         </dt>
         <dd>
-         {$ ctrl.listener.description | noValue:('None' | translate) $}
+         {$ tab.description | noValue:('None' | translate) $}
         </dd>
         <dt>
-         Protocol
+         协议
         </dt>
         <dd>
-         {$ ctrl.listener.protocol $}
+         {$ tab.protocol $}
         </dd>
         <dt translate="">
          Port
         </dt>
         <dd>
-         {$ ::ctrl.listener.protocol_port  $}
+         {$ ::tab.protocol_port  $}
         </dd>
        </dl>
     </div>
+      <h3>资源池</h3>
   <thead>
-    <tr>
-      <!--
-        Table-batch-actions:
-        This is where batch actions like searching, creating, and deleting.
-      -->
-      <th colspan="7" class="search-header">
-          <actions allowed="table.batchActions.actions" type="batch"></actions>
-      </th>
-    </tr>
 
     <tr>
       <!--
@@ -57,17 +49,14 @@
         Include expander if you want to inline details.
         Include action-col if you want to perform actions.
       -->
-      <th class="multi_select_column">
-        <input type="checkbox" hz-select-all="table.items">
-      </th>
 
-      <th class="expander"></th>
 
-      <th class="rsp-p1" st-sort="name" st-sort-default="name" translate>Name</th>
-      <th class="rsp-p1" st-sort="description" translate>Description</th>
-      <th class="rsp-p1" st-sort="protocol" translate>Protocol</th>
-      <th class="rsp-p1" st-sort="port" translate>Port</th>
-      <th class="actions_column" translate>Actions</th>
+      <th class="rsp-p1" st-sort="id" st-sort-default="id" translate>ID</th>
+      <th class="rsp-p1"  translate>Admin State Up</th>
+      <th class="rsp-p1"  translate>Protocol</th>
+      <th class="rsp-p1"  translate>负载均衡算法</th>
+        <th class="rsp-p1"  translate>Session Persistence</th>
+        <th class="rsp-p1"  translate>Health Monitor ID</th>
     </tr>
   </thead>
 
@@ -80,78 +69,16 @@
       Include action-col if you want to perform actions.
       rsp-p1 rsp-p2 are responsive priority as user resizes window.
     -->
-    <tr ng-repeat-start="item in table.items track by item.id"
-        ng-class="{'st-selected': checked[item.id]}">
-
-      <td class="multi_select_column">
-        <input type="checkbox"
-               ng-model="tCtrl.selections[item.id].checked"
-               hz-select="item">
-      </td>
-      <td class="expander">
-        <span class="fa fa-chevron-right"
-           hz-expand-detail
-           duration="200">
-        </span>
-      </td>
-      <td class="rsp-p1"><a ng-href="project/ngloadbalancersv2/{$ ::table.loadbalancerId $}/listeners/{$ ::item.id $}">{$ ::(item.name || item.id) $}</a></td>
-      <td class="rsp-p1">{$ ::item.description |  noValue:('None' | translate) $}</td>
-      <td class="rsp-p1">{$ ::item.protocol $}</td>
-      <td class="rsp-p1">{$ ::item.protocol_port $}</td>
-      <td class="actions_column">
-        <!--
-        Table-row-action-column:
-        Actions taken here apply to a single item/row.
-        -->
-        <actions allowed="table.rowActions.actions" type="row" item="item"></actions>
-      </td>
-    </tr>
-
-    <tr ng-repeat-end class="detail-row">
-      <!--
-        Detail-row:
-        Contains detailed information on this item.
-        Can be toggled using the chevron button.
-        Ensure colspan is greater or equal to number of column-headers.
-      -->
-      <td class="detail" colspan="7">
-
-        <div class="row">
-          <dl class="col-sm-2">
-            <dt translate>ID</dt>
-            <dd>{$ ::ctrl.pool.id $}</dd>
-          </dl>
-          <dl class="col-sm-2">
-            <dt translate>Admin State Up</dt>
-            <dd>{$ ::ctrl.pool.admin_state_up | yesno $}</dd>
-          </dl>
-          <dl class="col-sm-2">
-            <dt translate>Protocol</dt>
-            <dd>{$ ::ctrl.pool.protocol $}</dd>
-          </dl>
-            <!--
-          <dl class="col-sm-2">
-            <dt translate>Load Balancer Algorithm</dt>
-            <dd>{$ ::ctrl.pool.lb_algorithm $}</dd>
-          </dl>
-          -->
-                      <dl class="col-sm-2">
-            <dt translate>负载均衡算法</dt>
-            <dd>{$ ::ctrl.pool.lb_algorithm $}</dd>
-          </dl>
-                      <dl class="col-sm-2">
-            <dt translate>Session Persistence</dt>
-            <dd>{$ ::ctrl.pool.session_persistence | noValue:('None' | translate) $}</dd>
-          </dl>
-                      <dl class="col-sm-2">
-            <dt translate>Health Monitor ID</dt>
-            <dd>{$ ::ctrl.pool.healthmonitor_id  $}</dd>
-          </dl>
+    <tr ng-class="{'st-selected': checked[tab.pool.id]}">
 
 
-        </div>
+      <td class="rsp-p1"><a ng-href="/project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ::tab.id $}/pools/{$ tab.pool.id $}">{$ ::(tab.pool.name || tab.pool.id) $}</a></td>
+      <td class="rsp-p1" translate>{$ tab.pool.admin_state_up |  yesno $}</td>
+      <td class="rsp-p1">{$ ::tab.pool.protocol $}</td>
+      <td class="rsp-p1">{$ ::tab.pool.lb_algorithm $}</td>
+        <td class="rsp-p1" translate>{$ ::tab.pool.sessionStorage  |  noValue:('None' | translate)  $}</td>
+        <td class="rsp-p1">{$ ::tab.pool.healthmonitor_id $}</td>
 
-      </td>
     </tr>
 
   </tbody>
@@ -159,6 +86,30 @@
     Table-footer:
     This is where we display number of items and pagination controls.
   -->
-  <tfoot hz-table-footer items="table.items"></tfoot>
 
+
+</table>
+<table class="table table-striped table-rsp table-detail">
+        <hr>
+            <h3>成员</h3>
+
+    <thead>
+
+        <tr>
+              <th class="rsp-p1"  translate>ID</th>
+      <th class="rsp-p1"  translate>Admin State Up</th>
+      <th class="rsp-p1"  translate>Protocol Port</th>
+      <th class="rsp-p1"  translate>地址</th>
+        <th class="rsp-p1"  translate>Subnet ID</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in tab.pool.member">
+                  <td class="rsp-p1"><a ng-href="/project/ngloadbalancersv2/{$ ctrl.loadbalancer.id $}/listeners/{$ ::tab.id $}/pools/{$ tab.pool.id $}">{$ ::(item.id) $}</a></td>
+      <td class="rsp-p1" translate>{$ item.admin_state_up |  yesno $}</td>
+      <td class="rsp-p1">{$ ::item.protocol_port $}</td>
+      <td class="rsp-p1">{$ ::item.address $}</td>
+        <td class="rsp-p1" translate>{$ ::item.subnet_id  $}</td>
+        </tr>
+    </tbody>
 </table>

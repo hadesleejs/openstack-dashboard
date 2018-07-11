@@ -50,7 +50,6 @@
     ctrl.loadbalancerId = $routeParams.loadbalancerId;
     ctrl.batchActions = batchActions.init(ctrl.loadbalancerId);
     ctrl.rowActions = rowActions.init(ctrl.loadbalancerId);
-
     init();
 
     ////////////////////////////////
