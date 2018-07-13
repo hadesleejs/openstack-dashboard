@@ -176,6 +176,11 @@
               <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
