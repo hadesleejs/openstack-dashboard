@@ -78,7 +78,8 @@
     function set_pool(listener_item,property) {
       angular.bind(listener_item, function setProp(property, value) {
           listener_item[property] = value;
-          for (var i in listener_item[property].members){api.getMember(listener_item[property].id,listener_item[property].members[i].id).success(set_member(listener_item[property],'member'));}
+          for (var i in listener_item[property].members){
+            api.getMember(listener_item[property].id,listener_item[property].members[i].id).success(set_member(listener_item[property],'member'));}
       }, property);}
       function set_member(pool,property) {return angular.bind(pool,function setProp(property,value) {if(pool[property]==null){pool[property] = [];pool[property].push(value);}else {pool[property].push(value);} console.log(pool.property) },property);}
     function success(response) {
