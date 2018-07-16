@@ -188,6 +188,7 @@ class UpdatePort(project_forms.UpdatePort):
     def handle(self, request, data):
         try:
             port = api.neutron.port_get(request,data['port_id'])
+            print(port)
             LOG.debug('params = %s' % data)
             extension_kwargs = {}
             data['admin_state'] = (data['admin_state'] == 'True')
@@ -198,7 +199,9 @@ class UpdatePort(project_forms.UpdatePort):
             if 'mac_state' in data:
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
             if 'allowed_address_pair' in data:
-                print(port.allowed_address_pairs.append(data['allowed_address_pair']))
+                print(data['allowed_address_pair'])
+                port.allowed_address_pairs.append(data['allowed_address_pair'])
+                print(port.allowed_address_pairs)
                 port = api.neutron.port_update(request,
                                                data['port_id'],
                                                name=data['name'],
