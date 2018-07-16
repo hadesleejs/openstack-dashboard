@@ -180,7 +180,9 @@ class UpdatePort(project_forms.UpdatePort):
                     "cases, different implementations can run on different "
                     "hosts."),
         required=False)
-
+    allowed_address_pair =  forms.CharField(label=_("Allowed-Address-Pair"),
+                                            required=False,
+                                            help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"))
     failure_url = 'horizon:admin:networks:detail'
 
     def handle(self, request, data):
@@ -194,16 +196,28 @@ class UpdatePort(project_forms.UpdatePort):
 
             if 'mac_state' in data:
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
-
-            port = api.neutron.port_update(request,
-                                           data['port_id'],
-                                           name=data['name'],
-                                           admin_state_up=data['admin_state'],
-                                           device_id=data['device_id'],
-                                           device_owner=data['device_owner'],
-                                           binding__host_id=data
-                                           ['binding__host_id'],
-                                           **extension_kwargs)
+            if 'allowed_address_pair' in data:
+                self.allowed_address_pairs
+                port = api.neutron.port_update(request,
+                                               data['port_id'],
+                                               name=data['name'],
+                                               admin_state_up=data['admin_state'],
+                                               device_id=data['device_id'],
+                                               device_owner=data['device_owner'],
+                                               allowed_address_pairs=data['allowed_address_pair'],
+                                               binding__host_id=data
+                                               ['binding__host_id'],
+                                               **extension_kwargs)
+            else:
+                port = api.neutron.port_update(request,
+                                               data['port_id'],
+                                               name=data['name'],
+                                               admin_state_up=data['admin_state'],
+                                               device_id=data['device_id'],
+                                               device_owner=data['device_owner'],
+                                               binding__host_id=data
+                                               ['binding__host_id'],
+                                               **extension_kwargs)
             msg = _('Port %s was successfully updated.') % data['port_id']
             LOG.debug(msg)
             messages.success(request, msg)
