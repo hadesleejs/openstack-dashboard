@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70c423c8-176a-4b73-ad84-bc2bef094fcf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
       <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,53 +17,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-112">
-              <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+            <state relative-caret-position="796">
+              <caret line="200" column="86" lean-forward="false" selection-start-line="200" selection-start-column="86" selection-end-line="200" selection-end-column="86" />
               <folding>
                 <element signature="e#1166#7192#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/ports/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-              <folding>
-                <element signature="e#2220#2831#0" expanded="false" />
-                <element signature="e#4318#12404#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="183" column="36" lean-forward="false" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
-              <folding>
-                <element signature="e#1542#3512#0" expanded="false" />
-                <element signature="e#3558#3747#0" expanded="false" />
-                <element signature="e#3795#6963#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
-              <folding>
-                <element signature="e#1253#2661#0" expanded="false" />
-                <element signature="e#2712#3867#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -131,8 +92,8 @@
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/ports/forms.py" />
-        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
       </list>
     </option>
   </component>
@@ -651,23 +612,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+        <state relative-caret-position="1242">
+          <caret line="111" column="71" lean-forward="false" selection-start-line="111" selection-start-column="71" selection-end-line="111" selection-end-column="71" />
           <folding>
-            <element signature="e#1166#7192#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/ports/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-          <folding>
-            <element signature="e#2220#2831#0" expanded="false" />
-            <element signature="e#4318#12404#0" expanded="false" />
+            <element signature="e#1253#2661#0" expanded="false" />
+            <element signature="e#2712#3867#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -684,13 +635,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/views.py">
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/ports/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
+        <state relative-caret-position="234">
+          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
           <folding>
-            <element signature="e#1253#2661#0" expanded="false" />
-            <element signature="e#2712#3867#0" expanded="false" />
+            <element signature="e#2220#2831#0" expanded="false" />
+            <element signature="e#4318#12404#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="796">
+          <caret line="200" column="86" lean-forward="false" selection-start-line="200" selection-start-column="86" selection-end-line="200" selection-end-column="86" />
+          <folding>
+            <element signature="e#1166#7192#0" expanded="false" />
           </folding>
         </state>
       </provider>
