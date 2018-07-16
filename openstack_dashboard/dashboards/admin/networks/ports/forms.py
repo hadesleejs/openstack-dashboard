@@ -200,7 +200,7 @@ class UpdatePort(project_forms.UpdatePort):
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
             if 'allowed_address_pair' in data:
                 print(data['allowed_address_pair'])
-                port.allowed_address_pairs.append(data['allowed_address_pair'])
+                port.allowed_address_pairs.append(eval(data['allowed_address_pair'].encode('ascii')))
                 print(port.allowed_address_pairs)
                 port = api.neutron.port_update(request,
                                                data['port_id'],

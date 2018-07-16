@@ -110,6 +110,6 @@ class UpdateView(project_views.UpdateView):
         port = self._get_object()
         initial['binding__host_id'] = port['binding__host_id']
         if port['allowed_address_pairs'] != []:
-            initial['allowed_address_pair'] = port['allowed_address_pairs']
+            initial['allowed_address_pair'] = str(port['allowed_address_pairs']).encode('ascii')
 
         return initial
