@@ -111,8 +111,9 @@ class UpdateView(project_views.UpdateView):
         initial['binding__host_id'] = port['binding__host_id']
         if port['allowed_address_pairs'] != []:
             allowed_address_pairs = port['allowed_address_pairs']
+            allowed_address_pair = ''
             for item in allowed_address_pairs:
-
-                initial['allowed_address_pair'] = ''.join(item['ip_address']+':'+item['mac_address']+'\n\r')
+                allowed_address_pair = allowed_address_pair + item['ip_address']+':'+item['mac_address']+'\n'
+            initial['allowed_address_pair'] = allowed_address_pair
 
         return initial

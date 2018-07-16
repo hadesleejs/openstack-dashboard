@@ -208,6 +208,7 @@ class UpdatePort(project_forms.UpdatePort):
                 allowed_address_pairs = []
                 for item in allowed_address_pair:
                     allowed_address_pairs.append(eval(item.encode('ascii')))
+
                 port = api.neutron.port_update(request,
                                                data['port_id'],
                                                name=data['name'],
