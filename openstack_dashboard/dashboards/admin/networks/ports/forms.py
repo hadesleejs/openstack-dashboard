@@ -188,8 +188,8 @@ class UpdatePort(project_forms.UpdatePort):
         required=False)
     allowed_address_pair =  forms.CharField(label=_("Allowed-Address-Pair"),
                                             required=False,
-                                            help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"),
-                                            widget=forms.Textarea())
+                                            widget=forms.Textarea(),
+                                            help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"))
     failure_url = 'horizon:admin:networks:detail'
 
     def handle(self, request, data):
@@ -206,9 +206,7 @@ class UpdatePort(project_forms.UpdatePort):
             if 'mac_state' in data:
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
             if 'allowed_address_pair' in data:
-                print(data['allowed_address_pair'])
                 port.allowed_address_pairs.append(eval(data['allowed_address_pair'].encode('ascii')))
-                print(port.allowed_address_pairs)
                 port = api.neutron.port_update(request,
                                                data['port_id'],
                                                name=data['name'],
