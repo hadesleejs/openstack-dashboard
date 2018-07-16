@@ -147,6 +147,12 @@ class CreatePort(forms.SelfHandlingForm):
             if data['fixed_ip']:
                 data['fixed_ips'] = [{'ip_address':data['fixed_ip']}]
                 del data['fixed_ip']
+            else:
+                del data['fixed_ip']
+            if data['mac_address']:
+                pass
+            else:
+                del data['mac_address']
             if 'mac_state' in data:
                 data['mac_learning_enabled'] = data['mac_state']
                 del data['mac_state']
@@ -182,7 +188,8 @@ class UpdatePort(project_forms.UpdatePort):
         required=False)
     allowed_address_pair =  forms.CharField(label=_("Allowed-Address-Pair"),
                                             required=False,
-                                            help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"))
+                                            help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"),
+                                            widget=forms.Textarea())
     failure_url = 'horizon:admin:networks:detail'
 
     def handle(self, request, data):

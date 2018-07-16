@@ -110,6 +110,9 @@ class UpdateView(project_views.UpdateView):
         port = self._get_object()
         initial['binding__host_id'] = port['binding__host_id']
         if port['allowed_address_pairs'] != []:
-            initial['allowed_address_pair'] = str(port['allowed_address_pairs']).encode('ascii')
+            allowed_address_pairs = port['allowed_address_pairs']
+            for item in allowed_address_pairs:
+
+                initial['allowed_address_pair'] = ''.join(item['ip_address']+':'+item['mac_address']+'\n\r')
 
         return initial
