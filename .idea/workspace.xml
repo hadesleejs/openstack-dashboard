@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70c423c8-176a-4b73-ad84-bc2bef094fcf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
+      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +16,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="57" column="22" lean-forward="false" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+            <state relative-caret-position="-4014">
+              <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="644">
+              <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+              <folding>
+                <element signature="e#1542#3512#0" expanded="false" />
+                <element signature="e#3558#3747#0" expanded="false" />
+                <element signature="e#3795#6963#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_update.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/_update.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,6 +112,7 @@
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py" />
       </list>
     </option>
   </component>
@@ -163,7 +188,17 @@
               <item name="dashboards" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="networks" type="462c0819:PsiDirectoryNode" />
-              <item name="ports" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -174,7 +209,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../horizonmoon" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
@@ -292,14 +327,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="159" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bak/0847a58faa91.js" />
     <entry file="file://$PROJECT_DIR$/bak/84757e8f556f.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -613,8 +640,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="57" column="22" lean-forward="false" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+        <state relative-caret-position="-4014">
+          <caret line="62" column="18" lean-forward="true" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+          <folding>
+            <element signature="e#1542#3512#0" expanded="false" />
+            <element signature="e#3558#3747#0" expanded="false" />
+            <element signature="e#3795#6963#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

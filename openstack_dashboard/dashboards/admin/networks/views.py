@@ -193,4 +193,5 @@ class UpdateView(user_views.UpdateView):
                 'name': network['name'],
                 'admin_state': network['admin_state_up'],
                 'shared': network['shared'],
-                'external': network['router__external']}
+                'external': network['router__external'],
+                'allowed-address-pair':network['allowed-address-pair'],}
