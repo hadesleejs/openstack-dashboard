@@ -109,6 +109,6 @@ class UpdateView(project_views.UpdateView):
         initial = super(UpdateView, self).get_initial()
         port = self._get_object()
         initial['binding__host_id'] = port['binding__host_id']
-        initial['allowed_address_pairs'] = port['allowed_address_pairs']
+        initial['allowed_address_pair'] = '1111'
 
         return initial
