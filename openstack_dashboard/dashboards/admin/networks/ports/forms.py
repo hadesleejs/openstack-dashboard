@@ -55,7 +55,7 @@ class CreatePort(forms.SelfHandlingForm):
                                    required=False)
     mac_address = forms.MACAddressField(
         label=_("MAC Address"),
-        required=False,
+        required=True,
         help_text=_("Specify the MAC address for the new port")
     )
     # specify_ip = forms.ThemableChoiceField(
@@ -77,22 +77,17 @@ class CreatePort(forms.SelfHandlingForm):
     #         'data-switch-on': 'specify_ip',
     #         'data-specify_ip-subnet_id': _('Subnet'),
     #     }))
-    # fixed_ip = forms.IPField(
-    #     label=_("Fixed IP Address"),
-    #     required=False,
-    #     help_text=_("Specify the subnet IP address for the new port"),
-    #     version=forms.IPv4 | forms.IPv6,
-    #     widget=forms.TextInput(attrs={
-    #         'class': 'switched',
-    #         'data-switch-on': 'specify_ip',
-    #         'data-specify_ip-fixed_ip': _('Fixed IP Address'),
-    #     }))
-    fixed_ips = forms.IPField(
-        label = _("Fixed IP Address"),
-        required = False,
+    fixed_ip = forms.IPField(
+        label=_("Fixed IP Address"),
+        required=False,
         help_text=_("Specify the subnet IP address for the new port"),
         version=forms.IPv4 | forms.IPv6,
-    )
+        # widget=forms.TextInput(attrs={
+        #     'class': 'switched',
+        #     'data-switch-on': 'specify_ip',
+        #     'data-specify_ip-fixed_ip': _('Fixed IP Address'),
+        # })
+        )
     binding__host_id = forms.CharField(
         label=_("Binding: Host"),
         help_text=_("The ID of the host where the port is allocated. In some "
@@ -137,6 +132,21 @@ class CreatePort(forms.SelfHandlingForm):
             data['admin_state_up'] = (data['admin_state'] == 'True')
             del data['network_name']
             del data['admin_state']
+            # print(data)
+            # print(data['specify_ip'])
+            # if data['specify_ip'] == 'subnet_id':
+            #     if data['subnet_id']:
+            #         data['fixed_ips'] = [{"subnet_id": data['subnet_id']}]
+            # elif data['specify_ip'] == 'fixed_ip':
+            #     if data['fixed_ip']:
+            #         data['fixed_ips'] = [{"ip_address": data['fixed_ip']}]
+            #         del data['subnet_id']
+            #         del data['specify_ip']
+            #         del data['fixed_ip']
+            #         print(data)
+            if data['fixed_ip']:
+                data['fixed_ips'] = [{'ip_address':data['fixed_ip']}]
+                del data['fixed_ip']
             if 'mac_state' in data:
                 data['mac_learning_enabled'] = data['mac_state']
                 del data['mac_state']

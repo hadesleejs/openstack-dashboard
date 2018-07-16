@@ -1,104 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70c423c8-176a-4b73-ad84-bc2bef094fcf" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/agents/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/panel.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/extensions/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/extensions/allowed_address_pairs/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/extensions/allowed_address_pairs/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/extensions/allowed_address_pairs/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/ports/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/subnets/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/agents/_add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/agents/add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/ports/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/ports/_edit_port_help.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/ports/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/templates/networks/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-admin/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/panel.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/allowed_address_pairs/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/allowed_address_pairs/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/allowed_address_pairs/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/allowed_address_pairs/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/extensions/allowed_address_pairs/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/ports/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/utils.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/subnets/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/_detail_overview.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/_network_ips.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/_add_addresspair.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/_detail_overview.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/_edit_port_help.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/_port_ips.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/add_addresspair.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/ports/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/subnets/_detail_overview.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/templates/networks/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/networks-project/workflows.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/extensions/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/extensions/allowed_address_pairs/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/extensions/allowed_address_pairs/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/extensions/allowed_address_pairs/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/tabs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ports-admin/workflows.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="70c423c8-176a-4b73-ad84-bc2bef094fcf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +13,18 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="148" column="34" lean-forward="false" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -171,6 +85,7 @@
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.html" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/table.html" />
         <option value="$PROJECT_DIR$/static/dashboard/project/lbaasv2/loadbalancers/detail.controller.js" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
       </list>
     </option>
   </component>
@@ -211,12 +126,47 @@
               <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
+              <item name="ports" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -227,13 +177,14 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\cloudsight\openstack-dashboard\bak" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git_clone\openstack-dashboard\openstack_dashboard\dashboards\admin\networks\ports" />
       <recent name="D:\cloudsight\openstack-dashboard" />
       <recent name="D:\cloudsight\openstack-dashboard\openstack_dashboard\dashboards\admin\networks\ports" />
       <recent name="D:\cloudsight\openstack-dashboard\openstack_dashboard\dashboards\project\networks\ports" />
-      <recent name="D:\cloudsight\openstack-dashboard\bak" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\cloudsight\openstack-dashboard\bak" />
     </key>
   </component>
@@ -290,7 +241,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -298,7 +250,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -569,13 +521,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Download/table-bak.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Download/table-bak.html" />
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -583,13 +529,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/neutron_lbaas_dashboard/static/dashboard/project/lbaasv2/listeners/actions/row-actions.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1320">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/neutron_lbaas_dashboard/static/dashboard/project/lbaasv2/listeners/actions/row-actions.service.js" />
     <entry file="file://$PROJECT_DIR$/static/dashboard/project/lbaasv2/listeners/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-111">
@@ -615,14 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4500">
           <caret line="75" column="85" lean-forward="false" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -656,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -664,6 +595,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1604">
           <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="148" column="34" lean-forward="false" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
           <folding />
         </state>
       </provider>
