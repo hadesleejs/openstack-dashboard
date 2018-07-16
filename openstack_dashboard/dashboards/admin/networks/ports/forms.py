@@ -55,7 +55,7 @@ class CreatePort(forms.SelfHandlingForm):
                                    required=False)
     mac_address = forms.MACAddressField(
         label=_("MAC Address"),
-        required=True,
+        required=False,
         help_text=_("Specify the MAC address for the new port")
     )
     # specify_ip = forms.ThemableChoiceField(
