@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding=utf-8
+# author=hades
+# @Time    : 2018/8/2 11:17
 # Copyright 2013 OpenStack Foundation
 # All Rights Reserved.
 #
@@ -14,23 +18,22 @@
 #    under the License.
 
 from django.core.urlresolvers import reverse
-from django.template.defaultfilters import filesizeformat  # noqa
+from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.debug import sensitive_variables  # noqa
-import time
+from django.views.decorators.debug import sensitive_variables
+
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
 from horizon.utils import validators
 
 from openstack_dashboard import api
-from openstack_dashboard.api import cinder
 from openstack_dashboard.dashboards.project.images \
     import utils as image_utils
 from openstack_dashboard.dashboards.project.instances \
     import utils as instance_utils
-import time
-import logging
+
+
 def _image_choice_title(img):
     gb = filesizeformat(img.size)
     return '%s (%s)' % (img.name or img.id, gb)
@@ -41,9 +44,10 @@ class RebuildInstanceForm(forms.SelfHandlingForm):
 
     image = forms.ChoiceField(
         label=_("Select Image"),
-        widget=forms.SelectWidget(attrs={'class': 'image-selector'},
-                                  data_attrs=('size', 'display-name'),
-                                  transform=_image_choice_title))
+        widget=forms.ThemableSelectWidget(
+            attrs={'class': 'image-selector'},
+            data_attrs=('size', 'display-name'),
+            transform=_image_choice_title))
     password = forms.RegexField(
         label=_("Rebuild Password"),
         required=False,
@@ -54,8 +58,8 @@ class RebuildInstanceForm(forms.SelfHandlingForm):
         label=_("Confirm Rebuild Password"),
         required=False,
         widget=forms.PasswordInput(render_value=False))
-    disk_config = forms.ChoiceField(label=_("Disk Partition"),
-                                    required=False)
+    disk_config = forms.ThemableChoiceField(label=_("Disk Partition"),
+                                            required=False)
 
     def __init__(self, request, *args, **kwargs):
         super(RebuildInstanceForm, self).__init__(request, *args, **kwargs)
@@ -108,7 +112,7 @@ class RebuildInstanceForm(forms.SelfHandlingForm):
         try:
             api.nova.server_rebuild(request, instance, image, password,
                                     disk_config)
-            messages.success(request, _('Rebuilding instance %s.') % instance)
+            messages.info(request, _('Rebuilding instance %s.') % instance)
         except Exception:
             redirect = reverse('horizon:project:instances:index')
             exceptions.handle(request, _("Unable to rebuild instance."),
@@ -169,86 +173,196 @@ class DecryptPasswordInstanceForm(forms.SelfHandlingForm):
         return True
 
 
-class AttachInterface_bak(forms.SelfHandlingForm):
+class AttachVolume(forms.SelfHandlingForm):
+    volume = forms.ChoiceField(label=_("Volume ID"),
+                               widget=forms.ThemableSelectWidget(),
+                               help_text=_("Select a volume to attach "
+                                           "to this instance."))
+    device = forms.CharField(label=_("Device Name"),
+                             widget=forms.HiddenInput(),
+                             required=False,
+                             help_text=_("Actual device name may differ due "
+                                         "to hypervisor settings. If not "
+                                         "specified, then hypervisor will "
+                                         "select a device name."))
     instance_id = forms.CharField(widget=forms.HiddenInput())
-    network = forms.ChoiceField(label=_("Network"))
 
-    def __init__(self, request, *args, **kwargs):
-        super(AttachInterface, self).__init__(request, *args, **kwargs)
-        networks = instance_utils.network_field_data(request,
-                                                     include_empty_option=True)
-        self.fields['network'].choices = networks
+    def __init__(self, *args, **kwargs):
+        super(AttachVolume, self).__init__(*args, **kwargs)
+
+        # Populate volume choices
+        volume_list = kwargs.get('initial', {}).get("volume_list", [])
+        volumes = []
+        for volume in volume_list:
+            # Only show volumes that aren't attached to an instance already
+            if not volume.attachments:
+                volumes.append(
+                    (volume.id, '%(name)s (%(id)s)'
+                     % {"name": volume.name, "id": volume.id}))
+        if volumes:
+            volumes.insert(0, ("", _("Select a volume")))
+        else:
+            volumes.insert(0, ("", _("No volumes available")))
+        self.fields['volume'].choices = volumes
 
     def handle(self, request, data):
-        instance_id = data['instance_id']
-        network = data.get('network')
+        instance_id = self.initial.get("instance_id", None)
+        volume_choices = dict(self.fields['volume'].choices)
+        volume = volume_choices.get(data['volume'],
+                                    _("Unknown volume (None)"))
+        volume_id = data.get('volume')
+
+        device = data.get('device') or None
+
         try:
-            api.nova.interface_attach(request, instance_id, net_id=network)
-            msg = _('Attaching interface for instance %s.') % instance_id
-            messages.success(request, msg)
+            attach = api.nova.instance_volume_attach(request,
+                                                     volume_id,
+                                                     instance_id,
+                                                     device)
+
+            message = _('Attaching volume %(vol)s to instance '
+                        '%(inst)s on %(dev)s.') % {"vol": volume,
+                                                   "inst": instance_id,
+                                                   "dev": attach.device}
+            messages.info(request, message)
         except Exception:
             redirect = reverse('horizon:project:instances:index')
-            exceptions.handle(request, _("Unable to attach interface."),
+            exceptions.handle(request,
+                              _('Unable to attach volume.'),
                               redirect=redirect)
         return True
+
+
+class DetachVolume(forms.SelfHandlingForm):
+    volume = forms.ChoiceField(label=_("Volume ID"),
+                               widget=forms.ThemableSelectWidget(),
+                               help_text=_("Select a volume to detach "
+                                           "from this instance."))
+    instance_id = forms.CharField(widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        super(DetachVolume, self).__init__(*args, **kwargs)
+
+        # Populate instance id
+        instance_id = kwargs.get('initial', {}).get("instance_id", None)
+
+        # Populate attached volumes
+        try:
+            volumes = []
+            volume_list = api.nova.instance_volumes_list(self.request,
+                                                         instance_id)
+            for volume in volume_list:
+                volumes.append((volume.id, '%s (%s)' % (volume.name,
+                                                        volume.id)))
+            if volume_list:
+                volumes.insert(0, ("", _("Select a volume")))
+            else:
+                volumes.insert(0, ("", _("No volumes attached")))
+
+            self.fields['volume'].choices = volumes
+        except Exception:
+            redirect = reverse('horizon:project:instances:index')
+            exceptions.handle(self.request, _("Unable to detach volume."),
+                              redirect=redirect)
+
+    def handle(self, request, data):
+        instance_id = self.initial.get("instance_id", None)
+        volume_choices = dict(self.fields['volume'].choices)
+        volume = volume_choices.get(data['volume'],
+                                    _("Unknown volume (None)"))
+        volume_id = data.get('volume')
+
+        try:
+            api.nova.instance_volume_detach(request,
+                                            instance_id,
+                                            volume_id)
+
+            message = _('Detaching volume %(vol)s from instance '
+                        '%(inst)s.') % {"vol": volume,
+                                        "inst": instance_id}
+            messages.info(request, message)
+        except Exception:
+            redirect = reverse('horizon:project:instances:index')
+            exceptions.handle(request,
+                              _("Unable to detach volume."),
+                              redirect=redirect)
+        return True
+
 
 class AttachInterface(forms.SelfHandlingForm):
     instance_id = forms.CharField(widget=forms.HiddenInput())
-
-    network_type = forms.ChoiceField(
-        label=_("Network or Port"),
-        help_text=_("Choice Network or Port "),
-        widget=forms.Select(attrs={
+    specification_method = forms.ThemableChoiceField(
+        label=_("The way to specify an interface"),
+        initial=False,
+        widget=forms.ThemableSelectWidget(attrs={
             'class': 'switchable',
-            'data-slug': 'network_type'
+            'data-slug': 'specification_method',
         }))
-    port = forms.CharField(
-        max_length=255,
+    port = forms.ThemableChoiceField(
         label=_("Port"),
-        help_text=_("Port Id"),
-        # initial='default',
-        widget=forms.TextInput(attrs={
+        required=False,
+        widget=forms.ThemableSelectWidget(attrs={
             'class': 'switched',
-            'data-switch-on': 'network_type',
-            'data-network_type-port': _('Port'),
+            'data-switch-on': 'specification_method',
+            'data-specification_method-port': _('Port'),
+        }))
+    network = forms.ThemableChoiceField(
+        label=_("Network"),
+        required=False,
+        widget=forms.ThemableSelectWidget(attrs={
+            'class': 'switched',
+            'data-switch-on': 'specification_method',
+            'data-specification_method-network': _('Network'),
         }))
     fixed_ip = forms.IPField(
-        label=_("Fixed IP"),
+        label=_("Fixed IP Address"),
         required=False,
+        help_text=_("IP address for the new port"),
+        version=forms.IPv4 | forms.IPv6,
         widget=forms.TextInput(attrs={
             'class': 'switched',
-            'data-switch-on': 'network_type',
-            'data-network_type-network': _('Fixed IP'),
+            'data-switch-on': 'specification_method',
+            'data-specification_method-network': _('Fixed IP Address'),
         }))
 
-    network= forms.ChoiceField(
-        label='Network',
-        widget=forms.Select(attrs={
-            'class':'switched',
-            'data-switch-on':'network_type',
-            'data-network_type-network':_('Network'),
-        })
-    )
     def __init__(self, request, *args, **kwargs):
         super(AttachInterface, self).__init__(request, *args, **kwargs)
         networks = instance_utils.network_field_data(request,
-                                                     include_empty_option=True)
+                                                     include_empty_option=True,
+                                                     with_cidr=True)
         self.fields['network'].choices = networks
-        self.fields['network_type'].choices = [('network', _('Network')),('port', _('Port'))]
+
+        choices = [('network', _("by Network (and IP address)"))]
+        ports = instance_utils.port_field_data(request, with_network=True)
+        if len(ports) > 0:
+            self.fields['port'].choices = ports
+            choices.append(('port', _("by Port")))
+
+        self.fields['specification_method'].choices = choices
+
+    def clean_network(self):
+        specification_method = self.cleaned_data.get('specification_method')
+        network = self.cleaned_data.get('network')
+        if specification_method == 'network' and not network:
+            msg = _('This field is required.')
+            self._errors['network'] = self.error_class([msg])
+        return network
+
     def handle(self, request, data):
         instance_id = data['instance_id']
-        print(data)
-        network = data.get('network')
-        fixed_ip = data.get('fixed_ip')
-        port_id = data.get('port')
         try:
-            if fixed_ip != '':
-                print('ooooooooooooooooooooooooooooooooo--------------------------oooooooooooooooooo')
-                api.nova.interface_attach(request, instance_id, net_id=network,fixed_ip=fixed_ip)
-            elif port_id != '':
-                api.nova.interface_attach(request, instance_id, port_id=port_id)
+            net_id = port_id = fixed_ip = None
+            if data['specification_method'] == 'port':
+                port_id = data.get('port')
             else:
-                api.nova.interface_attach(request, instance_id,net_id=network)
+                net_id = data.get('network')
+                if data.get('fixed_ip'):
+                    fixed_ip = data.get('fixed_ip')
+            api.nova.interface_attach(request,
+                                      instance_id,
+                                      net_id=net_id,
+                                      fixed_ip=fixed_ip,
+                                      port_id=port_id)
             msg = _('Attaching interface for instance %s.') % instance_id
             messages.success(request, msg)
         except Exception:
@@ -257,15 +371,15 @@ class AttachInterface(forms.SelfHandlingForm):
                               redirect=redirect)
         return True
 
+
 class DetachInterface(forms.SelfHandlingForm):
     instance_id = forms.CharField(widget=forms.HiddenInput())
-    port = forms.ChoiceField(label=_("Port"))
+    port = forms.ThemableChoiceField(label=_("Port"))
 
     def __init__(self, request, *args, **kwargs):
         super(DetachInterface, self).__init__(request, *args, **kwargs)
         instance_id = self.initial.get("instance_id", None)
-        logging.basicConfig(filename='/home/yangsong.log', filemode="w", level=logging.DEBUG)
-        logging.debug('This message should go to the log file')
+
         ports = []
         try:
             ports = api.neutron.port_list(request, device_id=instance_id)
@@ -283,153 +397,17 @@ class DetachInterface(forms.SelfHandlingForm):
         else:
             choices.insert(0, ("", _("No Ports available")))
         self.fields['port'].choices = choices
+
     def handle(self, request, data):
         instance_id = data['instance_id']
         port = data.get('port')
-        ports = api.neutron.port_list(request, device_id=instance_id)
-
         try:
             api.nova.interface_detach(request, instance_id, port)
-            count=1
-            while True:
-                count+=1
-                if count>30:
-                    msg = _("Detached interface overtime")
-                    messages.error(request, msg)
-                    break
-                else:
-                    ports = api.neutron.port_list(request, device_id=instance_id)
-                    for p in ports:
-                        if p.id==port:
-                            time.sleep(1)
-                    else:
-                        msg = _('Detached interface %(port)s for instance '
-                                '%(instance)s.') % {'port': port, 'instance': instance_id}
-                        messages.success(request, msg)
-                        break
+            msg = _('Detached interface %(port)s for instance '
+                    '%(instance)s.') % {'port': port, 'instance': instance_id}
+            messages.success(request, msg)
         except Exception:
             redirect = reverse('horizon:project:instances:index')
             exceptions.handle(request, _("Unable to detach interface."),
                               redirect=redirect)
         return True
-
-def getfileteredvolume(instanceid,volumes):
-    #Patch by longxing
-    vols=[];
-    for vol in volumes:
-        #print vol.attachments[0].get("server_id","server_id not existing")
-        if vol.attachments[0].get("server_id","server_id not existing") == instanceid:
-            vols.append(vol)
-    return  vols
-
-def getVolumeList(volumes):
-    #Patch by longxing
-    choice=[("None","None")]
-    for vol in volumes:
-        if vol.attachments[0].get("device","error") == "/dev/vda":
-            choice.append(tuple([vol.id,"system disk"+" "+vol.name]))
-        else:
-            choice.append(tuple([vol.id,vol.attachments[0].get("device","error")+" "+vol.name]))
-    choice=tuple(choice)
-    return choice
-
-class CreateSnapshotAdvanced(forms.SelfHandlingForm):
-    #Patch by longxing: Create snapshot based on instance and volume
-    instance_id = forms.CharField(label=_("Instance ID"),
-                                  widget=forms.HiddenInput(),
-                                  required=False)
-    name = forms.CharField(max_length=255, label=_("Snapshot Name"))
-    description = forms.CharField(max_length=255, label=_("Snapshot Description"))
-
-
-    def __init__(self, request, *args, **kwargs):
-        super(CreateSnapshotAdvanced, self).__init__(request, *args, **kwargs)
-
-        instance_id=kwargs.get('initial', {}).get('instance_id', [])
-        search_opts={'status':'in-use'}
-        volumes = cinder.volume_list(self.request,search_opts)
-        volumes=getfileteredvolume(instance_id,volumes)
-
-        VOL_CHOICES=getVolumeList(volumes)
-        #self.fields['volume_radio'] = forms.ChoiceField(widget=forms.RadioSelect(),
-        #                                           choices=VOL_CHOICES,label="cloud disk")
-        self.fields['volume_select'] = forms.ChoiceField(widget=forms.Select(),
-                                                   choices=VOL_CHOICES,label=_("cloud disk"))
-
-    def handle(self, request, data):
-        try:
-            if data['volume_select'] == "None":
-                redirect = reverse("horizon:project:instances:index")
-                msg = _('There is no volume selected.')
-                exceptions.handle(request,msg,redirect=redirect)
-                return "not selected"
-            volume = cinder.volume_get(request,
-                                       data['volume_select'])
-            forceflag = False
-            message = _('Creating volume snapshot "%s".') % data['name']
-            if volume.status == 'in-use':
-                forceflag = True
-                message = _('Forcing to create snapshot "%s" '
-                            'from attached volume.') % data['name']
-            snapshot = cinder.volume_snapshot_create(request,
-                                                     data['volume_select'],
-                                                     data['name'],
-                                                     data['description'],
-                                                     force=forceflag)
-            messages.info(request, message)
-            return snapshot
-        except Exception as e:
-            redirect = reverse("horizon:project:instances:index")
-            msg = _('Unable to create volume snapshot.')
-            if data['volume_select'] != "None":
-                if e.code == 413:
-                    msg = _('Requested snapshot would exceed the allowed quota.')
-            else:
-                msg = _('There is no volume selected.')
-            exceptions.handle(request,
-                              msg,
-                              redirect=redirect)
-
-
-
-
-class RollbackSnapshotAdvancedAct(forms.SelfHandlingForm):
-    #patch by longxing:Rollback snapshot based on instance and volume
-    instance_id = forms.CharField(label=_("Instance ID"),
-                                  widget=forms.HiddenInput(),
-                                  required=False)
-
-    def __init__(self, request, *args, **kwargs):
-        super(RollbackSnapshotAdvancedAct, self).__init__(request, *args, **kwargs)
-
-        volume_id=kwargs.get('initial', {}).get('volume_id', [])
-        snapshot_id=kwargs.get('initial', {}).get('snapshot_id', [])
-        self.fields['volume_id'] = forms.CharField(widget=forms.HiddenInput(),
-                                                   initial=volume_id)
-        self.fields['snapshot_id'] = forms.CharField(widget=forms.HiddenInput(),
-                                                   initial=snapshot_id)
-
-
-        self.fields['Confirm to rollback?'] = forms.ChoiceField(widget=forms.RadioSelect(),
-                                                   choices=(("yes",_("yes")),),label=_("confirm"))
-
-    def handle(self, request, data):
-        try:
-            instance=api.nova.server_get(request,data['instance_id'])
-            if data['Confirm to rollback?'] == "yes":
-                
-
-                rollback = api.nova.server_rollback(request,
-                                                instance,
-                                                data['volume_id'],
-                                                data['snapshot_id'],
-                                                True)
-                time.sleep(1)
-                msg = _('Rolling back the current instance...')
-                request.session['rollback']=data['instance_id']
-                messages.success(request, msg)
-                return instance
-            return "not do it"
-        except Exception,e:
-            exceptions.handle(request,
-                              _('Unable to rollback snapshot '+e.message))

@@ -65,56 +65,35 @@
     ////////////////////////////////
 
     function init() {
-      api.getLoadBalancer($routeParams.loadbalancerId, true).success(success);
-
+        api.getLoadBalancer($routeParams.loadbalancerId, true).success(success);
+        api.getListeners($routeParams.loadbalancerId, true).success(get_listeners);
+    }
+    function success(response) {
+        ctrl.loadbalancer = response;
     }
     function get_listeners(response) {
-      ctrl.listeners = response.items;
-      for(var i in response.items ){
-        api.getPool(response.items[i].default_pool_id).success(set_pool(response.items[i],'pool'));
+        ctrl.listeners = response.items;
+        for(var i in response.items ){
+            api.getPool(response.items[i].default_pool_id).success(set_pool(response.items[i],'pool'));
 
     }}
-
     function set_pool(listener_item,property) {
-      angular.bind(listener_item, function setProp(property, value) {
-          listener_item[property] = value;
-          for (var i in listener_item[property].members){
-            api.getMember(listener_item[property].id,listener_item[property].members[i].id).success(set_member(listener_item[property],'member'));}
-      }, property);}
-      function set_member(pool,property) {return angular.bind(pool,function setProp(property,value) {if(pool[property]==null){pool[property] = [];pool[property].push(value);}else {pool[property].push(value);} console.log(pool.property) },property);}
-    function success(response) {
-      ctrl.loadbalancer = response;
-      for (var i in response.listeners){
-          api.getListener(response.listeners[i].id).success(get_listener);
-      };
-      for (var i in response.pool){
-        api.getPool(response.pool[i].id,true).success(get_pool);
-      };
+        return angular.bind(listener_item, function setProp(property, value) {
+            listener_item[property] = value;
+            for (var i in listener_item[property].members){
+                api.getMember(listener_item[property].id,listener_item[property].members[i].id).success(set_member(listener_item[property],'member'));
+            }
+            console.log(listener_item[property])
+    }, property);}
+    function set_member(pool,property) {
+        return angular.bind(pool,function setProp(property,value) {if(pool[property]==null){pool[property] = [];pool[property].push(value);}else {pool[property].push(value);} console.log(pool.property) },property);
     }
-    function get_listener(response) {
-      ctrl.listener = response
 
-    }
-    function get_pool(response) {
-      ctrl.pool  = response;
-      if(ctrl.pool.healthmonitor_id){
-              api.getHealthMonitor(ctrl.pool.healthmonitor_id,true).success(get_healthmonitor);
-      }else {
-        $scope.isShow=false;
-      }
-
-
-    }
-    function get_healthmonitor(response) {ctrl.healthmonitor = response;console.log(response)}
-    function get_healthmonitor_error() {$scope.isShow = false;}
-    function get_pool_detail(response) {console.log(response);ctrl.pool = response;console.log(ctrl.pool)}
-    function set(property) {return angular.bind(null, function setProp(property, value) {ctrl[property] = value;}, property);}
-    // Save the active state of the listeners tab in the global window object so it can stay
-    // active after reloading the route following an action.
     $scope.$watch(function() {
-      return ctrl.listenersTabActive;
-    }, function(active) {
-      $window.listenersTabActive = active;
+        return ctrl.listenersTabActive;
+    },
+    function(active) {
+        $window.listenersTabActive = active;
     });
 
   }
