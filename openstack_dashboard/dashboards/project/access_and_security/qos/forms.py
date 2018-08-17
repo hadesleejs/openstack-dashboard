@@ -100,7 +100,11 @@ class AddRule(forms.SelfHandlingForm):
                                    required=False,
                                    help_text=_("Enter a value for max_kbps "),)
 
+    def __init__(self, request, *args, **kwargs):
+        super(AddRule, self).__init__(request, *args, **kwargs)
+
     def handle(self, request, data):
+        print(data)
         try:
             max_burst_kbps = data['max_burst_kbps']
             max_kbps = data['max_kbps']
@@ -160,4 +164,46 @@ class CreateQoSPolicy(QoSPolicyForm):
         except Exception:
             redirect = reverse('horizon:project:access_and_security:index')
             msg = _('Failed to create QoS policy %s') % data['name']
+            exceptions.handle(request, msg, redirect=redirect)
+
+
+class RuleForm(forms.SelfHandlingForm):
+    id = forms.CharField(widget=forms.HiddenInput())
+    rule_id = forms.CharField(widget=forms.HiddenInput())
+    max_burst_kbps = forms.IntegerField(label=_("max_burst_kbps"),
+                                   required=False,
+                                   help_text=_("Enter a value for max_burst_kbps "),)
+    max_kbps = forms.IntegerField(label=_("max_kbps"),
+                                   required=False,
+                                   help_text=_("Enter a value for max_kbps "),)
+
+    def __init__(self, request, *args, **kwargs):
+        super(RuleForm, self).__init__(request, *args, **kwargs)
+
+    def handle(self, request, data):
+        try:
+            max_burst_kbps = data['max_burst_kbps']
+            max_kbps = data['max_kbps']
+            qos_id = data['id']
+            data_send = {
+                'max_burst_kbps': max_burst_kbps,
+                'max_kbps': max_kbps,
+            }
+            try:
+                if data['rule_id']:
+                    rule = data['rule_id']
+                    api.neutron.update_qos_bandwidth(rule,qos_id,data_send)
+                else:
+                    api.neutron.create_qos_bandwidth(qos_id,data_send)
+                msg = (_('QoS  %s was updated successful.') %
+                       data['id'])
+            except Exception:
+
+                msg = (_('QoS  %s was updated failure.') %
+                       data['id'])
+            LOG.debug(msg)
+            messages.success(request, msg)
+        except Exception:
+            redirect = reverse('horizon:project:access_and_security:index')
+            msg = _('Failed to update QoS  %s') % data['id']
             exceptions.handle(request, msg, redirect=redirect)

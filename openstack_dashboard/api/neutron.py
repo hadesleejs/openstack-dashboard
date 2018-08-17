@@ -1878,7 +1878,7 @@ def policy_get(request, policy_id, **kwargs):
     return QoSPolicy(policy)
 
 
-def update_qos_bandwidth(request,policy_id,rule_id,**kwargs):
+def update_qos_bandwidth(request,rule_id,policy_id,**kwargs):
     try:
         policy = neutronclient(request).update_bandwidth_limit_rule(rule_id,policy_id,**kwargs)
         return True

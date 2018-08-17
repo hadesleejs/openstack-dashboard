@@ -106,16 +106,13 @@ class EditQosView(forms.ModalFormView):
 
 
 class QosRuleView(forms.ModalFormView):
-    pass
-class CreateQosRuleView(forms.ModalFormView):
     form_class = qos_forms.AddRule
     form_id = "create_qos_rule_form"
     modal_header = _("Add Rule")
     modal_id = "create_qos_rule_modal"
     template_name = 'project/access_and_security/qos/add_rule.html'
     submit_label = _("Add")
-    success_url = 'horizon:project:access_and_security:index'
-    submit_url = "horizon:project:access_and_security:qos:create_qos_rule"
+    submit_url = "horizon:project:access_and_security:qos:qos_rule"
     url = "horizon:project:access_and_security:qos:detail_qos"
     page_title = _("Add Rule")
     cancel_url = reverse_lazy(
@@ -125,7 +122,7 @@ class CreateQosRuleView(forms.ModalFormView):
         return reverse(self.url, args=[sg_id])
 
     def get_context_data(self, **kwargs):
-        context = super(CreateQosRuleView, self).get_context_data(**kwargs)
+        context = super(QosRuleView, self).get_context_data(**kwargs)
         context["qos_id"] = self.kwargs['qos_id']
         args = (self.kwargs['qos_id'],)
         context['submit_url'] = reverse(self.submit_url, args=args)
@@ -140,3 +137,17 @@ class CreateQosRuleView(forms.ModalFormView):
             return {'id': self.kwargs['qos_id'],'max_burst_kbps':qos.rules[0]['max_burst_kbps'],
                     'rule_id':qos.rules[0]['id'],'max_kbps':qos.rules[0]['max_kbps']}
 
+
+
+class CreateQosRuleView(forms.ModalFormView):
+    form_class = qos_forms.RuleForm
+    form_id = "create_qos_rule"
+    modal_header = _("Create qos rule")
+    # template_name = 'project/access_and_security/qos/create.html'
+    # submit_label = _("Create Quality of Service")
+    # submit_url = reverse_lazy(
+    #     "horizon:project:access_and_security:qos:create_qos")
+    success_url = 'horizon:project:access_and_security:index'
+    # page_title = _("Create Quality of Service")
+    # cancel_url = reverse_lazy(
+    #     "horizon:project:access_and_security:index")

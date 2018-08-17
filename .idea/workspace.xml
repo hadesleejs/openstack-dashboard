@@ -2,98 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70c423c8-176a-4b73-ad84-bc2bef094fcf" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/api/neutron_bak.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/qos/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/qos/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/qos/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/_create_rule.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/_detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/_policies.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/create_rule.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/info/qos_index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/agents/_add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/agents/add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/ports/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/ports/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/ports/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/ports/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/networks/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/qos/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/qos/_detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/qos/_policies.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/templates/qos/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/network_qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/network_qos/panel.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/network_qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/qos/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/qos/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/qos/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/base_qos.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/index_index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/_detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/_update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/templates/networks/qos/update.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/_add_rule.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/_create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/add_rule.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/create.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/network_qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/network_qos/panel.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/network_qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/qos/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/qos/tables.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/qos/urls.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/qos/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/templates/networks/qos/_detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/templates/networks/qos/_policies.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/templates/networks/qos/detail.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/openstack_dashboard/enabled/_1510_project_network_qos_panel.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/openstack-dashboard.iml" afterPath="$PROJECT_DIR$/.idea/openstack-dashboard.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/openstack_dashboard/api/neutron.py" afterPath="$PROJECT_DIR$/openstack_dashboard/api/neutron.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/constants.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/constants.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/tables.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/tables.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/tabs.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/tabs.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/urls.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/urls.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/views.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/info/views.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/ports/forms.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/urls.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/admin/networks/urls.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/floating_ips/tables.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/floating_ips/tables.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/forms.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/tables.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/tables.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/views.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/views.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/tabs.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/tabs.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/urls.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/urls.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/instances/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/instances/forms.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/instances/utils.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/instances/utils.py" />
-      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/urls.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/networks/urls.py" />
+      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py" />
+      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py" />
+      <change beforePath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/views.py" afterPath="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -213,11 +126,11 @@
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/detail.html" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/security_groups/forms.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/_add_rule.html" />
-        <option value="$PROJECT_DIR$/openstack_dashboard/api/neutron.py" />
-        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/_create.html" />
-        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/urls.py" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/api/neutron.py" />
+        <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py" />
         <option value="$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/views.py" />
       </list>
     </option>
@@ -228,7 +141,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="518" />
     <option name="y" value="60" />
     <option name="width" value="1456" />
@@ -269,39 +182,6 @@
               <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="dashboards" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboards" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="local" type="462c0819:PsiDirectoryNode" />
-              <item name="local_settings.d" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="openstack-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="openstack-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="openstack_dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -383,7 +263,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3872" height="2092" extended-state="7" />
+    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -835,68 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/tabs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="149" column="26" lean-forward="true" selection-start-line="149" selection-start-column="26" selection-end-line="149" selection-end-column="26" />
-          <folding>
-            <element signature="e#1745#2446#0" expanded="false" />
-            <element signature="e#2487#2969#0" expanded="false" />
-            <element signature="e#3013#5047#0" expanded="false" />
-            <element signature="e#5089#5524#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/neutronclient/v2_0/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="1851" column="8" lean-forward="false" selection-start-line="1851" selection-start-column="8" selection-end-line="1851" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/api/neutron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1147">
-          <caret line="1897" column="47" lean-forward="false" selection-start-line="1897" selection-start-column="47" selection-end-line="1897" selection-end-column="47" />
-          <folding>
-            <element signature="e#4778#5300#0" expanded="false" />
-            <element signature="e#5360#5617#0" expanded="false" />
-            <element signature="e#5661#5781#0" expanded="false" />
-            <element signature="e#66315#66461#0" expanded="false" />
-            <element signature="e#66506#66867#0" expanded="false" />
-            <element signature="e#66910#67072#0" expanded="false" />
-            <element signature="e#67126#67270#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="207" column="35" lean-forward="false" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="35" />
-          <folding>
-            <element signature="e#864#1012#0" expanded="false" />
-            <element signature="e#1063#1985#0" expanded="false" />
-            <element signature="e#2034#2180#0" expanded="false" />
-            <element signature="e#2227#2369#0" expanded="false" />
-            <element signature="e#2420#2624#0" expanded="false" />
-            <element signature="e#2671#3171#0" expanded="false" />
-            <element signature="e#3214#4249#0" expanded="false" />
-            <element signature="e#4596#5087#0" expanded="false" />
-            <element signature="e#5125#5373#0" expanded="false" />
-            <element signature="e#5417#5446#0" expanded="false" />
-            <element signature="e#5931#6038#0" expanded="false" />
-            <element signature="e#6094#6203#0" expanded="false" />
-            <element signature="e#7286#8030#0" expanded="false" />
-            <element signature="e#8138#8373#0" expanded="false" />
-            <element signature="e#8444#8659#0" expanded="false" />
-            <element signature="e#8701#9351#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/templates/access_and_security/qos/_add_rule.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -929,34 +747,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/tabs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="149" column="26" lean-forward="true" selection-start-line="149" selection-start-column="26" selection-end-line="149" selection-end-column="26" />
+          <folding>
+            <element signature="e#1745#2446#0" expanded="false" />
+            <element signature="e#2487#2969#0" expanded="false" />
+            <element signature="e#3013#5047#0" expanded="false" />
+            <element signature="e#5089#5524#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/neutronclient/v2_0/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="1846" column="8" lean-forward="false" selection-start-line="1846" selection-start-column="8" selection-end-line="1846" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/api/neutron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="1883" column="19" lean-forward="true" selection-start-line="1883" selection-start-column="19" selection-end-line="1883" selection-end-column="19" />
+          <folding>
+            <element signature="e#4778#5300#0" expanded="false" />
+            <element signature="e#5360#5617#0" expanded="false" />
+            <element signature="e#5661#5781#0" expanded="false" />
+            <element signature="e#66315#66461#0" expanded="false" />
+            <element signature="e#66506#66867#0" expanded="false" />
+            <element signature="e#66910#67072#0" expanded="false" />
+            <element signature="e#67126#67270#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        <state relative-caret-position="900">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        <state relative-caret-position="944">
+          <caret line="106" column="18" lean-forward="false" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
           <folding>
             <element signature="e#475#1091#0" expanded="false" />
-            <element signature="e#1137#2570#0" expanded="false" />
             <element signature="e#2603#3081#0" expanded="false" />
-            <element signature="e#5029#5394#0" expanded="false" />
+            <element signature="e#4889#6181#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="108" column="8" lean-forward="false" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+        <state relative-caret-position="994">
+          <caret line="114" column="66" lean-forward="false" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="66" />
           <folding>
+            <element signature="e#1219#1742#0" expanded="false" />
             <element signature="e#1792#2696#0" expanded="false" />
             <element signature="e#2742#4187#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openstack_dashboard/dashboards/project/access_and_security/qos/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="173" column="51" lean-forward="true" selection-start-line="173" selection-start-column="51" selection-end-line="173" selection-end-column="51" />
+          <folding>
+            <element signature="e#864#1012#0" expanded="false" />
+            <element signature="e#1063#1985#0" expanded="false" />
+            <element signature="e#2034#2180#0" expanded="false" />
+            <element signature="e#2227#2369#0" expanded="false" />
+            <element signature="e#2420#2624#0" expanded="false" />
+            <element signature="e#2671#3171#0" expanded="false" />
+            <element signature="e#3214#4249#0" expanded="false" />
+            <element signature="e#4596#5087#0" expanded="false" />
+            <element signature="e#5125#5373#0" expanded="false" />
+            <element signature="e#5417#5446#0" expanded="false" />
+            <element signature="e#5871#6703#0" expanded="false" />
+            <element signature="e#5924#6031#0" expanded="false" />
+            <element signature="e#6087#6196#0" expanded="false" />
+            <element signature="e#7264#8008#0" expanded="false" />
           </folding>
         </state>
       </provider>

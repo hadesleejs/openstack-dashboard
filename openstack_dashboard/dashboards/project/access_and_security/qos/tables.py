@@ -171,7 +171,7 @@ def get_remote_security_group(rule):
 class CreateRule(tables.LinkAction):
     name = "add_rule"
     verbose_name = _("Add Rule")
-    url = "horizon:project:access_and_security:qos:create_qos_rule"
+    url = "horizon:project:access_and_security:qos:qos_rule"
     classes = ("ajax-modal",)
     icon = "plus"
 
@@ -199,13 +199,13 @@ class DeleteRule(tables.DeleteAction):
             count
         )
 
-    def allowed(self, request, security_group_rule=None):
+    def allowed(self, request, rule=None):
         return True
     def delete(self, request, obj_id ):
         qos_id = self.table.kwargs['qos_id']
         print(qos_id)
         try:
-            api.neutron.delete_qos_bandwidth(request, obj_id, qos_id)
+            api.neutron.delete_qos_bandwidth(request, qos_id, obj_id)
         except Exception:
             return False
 
@@ -296,5 +296,5 @@ class QosTable(tables.DataTable):
     class Meta(object):
         name = "quality_of_service"
         verbose_name = _("Quality of Service")
-        table_actions = (CreateQos, DeleteQos,QosFilterAction,)
-        row_actions = (EditQos,ManageRules)
+        table_actions = (CreateQos, DeleteQos, QosFilterAction,)
+        row_actions = (ManageRules,)
