@@ -184,6 +184,8 @@ STATUS_DISPLAY_CHOICES = (
 )
 
 
+
+
 class FloatingIPsTable(tables.DataTable):
     STATUS_CHOICES = (
         ("active", True),

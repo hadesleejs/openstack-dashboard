@@ -285,6 +285,6 @@ class RulesTable(tables.DataTable):
 
     class Meta(object):
         name = "rules"
-        verbose_name = _("Security Group Rules")
+        verbose_name = _("Quality of Service Rules")
         table_actions = (CreateRule, DeleteRule)
         row_actions = (DeleteRule,)

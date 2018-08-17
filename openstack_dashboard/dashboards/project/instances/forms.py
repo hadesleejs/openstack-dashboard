@@ -169,30 +169,86 @@ class DecryptPasswordInstanceForm(forms.SelfHandlingForm):
         return True
 
 
-class AttachInterface_bak(forms.SelfHandlingForm):
+class AttachInterface(forms.SelfHandlingForm):
     instance_id = forms.CharField(widget=forms.HiddenInput())
-    network = forms.ChoiceField(label=_("Network"))
+    # network = forms.ChoiceField(label=_("Network"))
+    network_type = forms.ChoiceField(
+        label=_("Network or Port"),
+        help_text=_("Choice Network or Port "),
+        widget=forms.Select(attrs={
+            'class': 'switchable',
+            'data-slug': 'network_type'
+        }))
+    network= forms.ChoiceField(
+        label=_("Network"),
+        required=False,
+        help_text='choice a network',
+        widget=forms.Select(attrs={
+            'class':'switched',
+            'data-switch-on':'network_type',
+            'data-network_type-network':_('Network'),
+        }))
+    port= forms.ChoiceField(
+        label=_("Port"),
+        required=False,
+        help_text='choice a port',
+        widget=forms.Select(attrs={
+            'class':'switched',
+            'data-switch-on':'network_type',
+            'data-network_type-port':_('Port'),
+        }))
+    fixed_ip = forms.IPField(
+        label=_("Fixed IP"),
+        required=False,
+        help_text='input fixed ip',
+        widget=forms.TextInput(attrs={
+            'class': 'switched',
+            'data-switch-on': 'network_type',
+            'data-network_type-network': _('Fixed IP'),
+        }))
+
 
     def __init__(self, request, *args, **kwargs):
         super(AttachInterface, self).__init__(request, *args, **kwargs)
         networks = instance_utils.network_field_data(request,
                                                      include_empty_option=True)
         self.fields['network'].choices = networks
+        choices = [('network', _('Network'))]
+        ports = instance_utils.port_field_tenant_data(request)
+        if len(ports) > 0:
+            self.fields['port'].choices = ports
+            choices.append(('port', _("Port")))
+        self.fields['network_type'].choices = choices
 
     def handle(self, request, data):
         instance_id = data['instance_id']
         network = data.get('network')
+        port = data.get('port')
+        network_type = data.get('network_type')
+        fixed_ip = data.get('fixed_ip')
         try:
-            api.nova.interface_attach(request, instance_id, net_id=network)
-            msg = _('Attaching interface for instance %s.') % instance_id
-            messages.success(request, msg)
+            if network_type == 'network':
+                del data['port']
+                if fixed_ip == '':
+
+                    api.nova.interface_attach(request, instance_id, net_id=network)
+                    msg = _('Attaching interface for instance %s.') % instance_id
+                    messages.success(request, msg)
+                else:
+                    api.nova.interface_attach(request, instance_id, net_id=network,fixed_ip=fixed_ip)
+                    msg = _('Attaching interface for instance %s.') % instance_id
+                    messages.success(request, msg)
+            else:
+                api.nova.interface_attach(request, instance_id,port_id=port)
+                msg = _('Attaching interface for instance %s.') % instance_id
+                messages.success(request, msg)
         except Exception:
             redirect = reverse('horizon:project:instances:index')
             exceptions.handle(request, _("Unable to attach interface."),
                               redirect=redirect)
         return True
 
-class AttachInterface(forms.SelfHandlingForm):
+class AttachInterface_bak(forms.SelfHandlingForm):
     instance_id = forms.CharField(widget=forms.HiddenInput())
 
     network_type = forms.ChoiceField(
@@ -227,8 +283,7 @@ class AttachInterface(forms.SelfHandlingForm):
             'class':'switched',
             'data-switch-on':'network_type',
             'data-network_type-network':_('Network'),
-        })
-    )
+        }))
     def __init__(self, request, *args, **kwargs):
         super(AttachInterface, self).__init__(request, *args, **kwargs)
         networks = instance_utils.network_field_data(request,
@@ -237,18 +292,17 @@ class AttachInterface(forms.SelfHandlingForm):
         self.fields['network_type'].choices = [('network', _('Network')),('port', _('Port'))]
     def handle(self, request, data):
         instance_id = data['instance_id']
-        print(data)
-        network = data.get('network')
-        fixed_ip = data.get('fixed_ip')
-        port_id = data.get('port')
+        network = data['network']
+        fixed_ip = data['fixed_ip']
+        port_id = data['port']
         try:
-            if fixed_ip != '':
-                print('ooooooooooooooooooooooooooooooooo--------------------------oooooooooooooooooo')
-                api.nova.interface_attach(request, instance_id, net_id=network,fixed_ip=fixed_ip)
-            elif port_id != '':
-                api.nova.interface_attach(request, instance_id, port_id=port_id)
-            else:
-                api.nova.interface_attach(request, instance_id,net_id=network)
+            # if fixed_ip != '':
+            #     print('ooooooooooooooooooooooooooooooooo--------------------------oooooooooooooooooo')
+            #     api.nova.interface_attach(request, instance_id, net_id=network,fixed_ip=fixed_ip)
+            # elif port_id != '':
+            #     api.nova.interface_attach(request, instance_id, port_id=port_id)
+            # else:
+            api.nova.interface_attach(request, instance_id,net_id=network)
             msg = _('Attaching interface for instance %s.') % instance_id
             messages.success(request, msg)
         except Exception:

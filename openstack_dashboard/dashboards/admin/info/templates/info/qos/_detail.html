@@ -1,0 +1,21 @@
+{% load i18n sizeformat %}
+
+<h3>{% trans "QoS Policy Overview" %}</h3>
+<a href="{% url 'horizon:admin:info:qos:create' %}" id="qos__action_create" class="btn btn-default btn-sm ajax-modal pull-right">
+          <span class="fa fa-plus"></span> {% trans "Create Qos"%}</a>
+<div class="info detail">
+  <dl>
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ qos.name }}</dd>
+    <dt>{% trans "Description" %}</dt>
+    <dd>{{ qos.description|default:_("None") }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ qos.id }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ qos.tenant_id|default:"-" }}</dd>
+    <dt>{% trans "Policy" %}</dt>
+    <dd>
+        {% include "admin/info/qos/_policies.html" %}
+    </dd>
+  </dl>
+</div>

@@ -185,3 +185,41 @@ def port_field_data(request):
                  if port.device_owner == ''])
     ports.sort(key=lambda obj: obj[1])
     return ports
+
+def tenant_field_data(request):
+    """Returns a list of tuples of all ports available for the tenant.
+
+    Generates a list of ports that have no device_owner based on the networks
+    available to the tenant doing the request.
+
+    :param request: django http request object
+    :return: list of (id, name) tuples
+    """
+
+    tenant = []
+    try:
+        tenants = api.keystone.tenant_list(request)
+        tenant = [(n.id, n.name) for n in tenants[0]]
+        tenant.sort(key=lambda obj: obj[1])
+        tenant.insert(0,('null','null'))
+    except Exception as e:
+        msg = _('Failed to get tenant list {0}').format(six.text_type(e))
+        exceptions.handle(request, msg)
+
+    return tenant
+
+def port_field_tenant_data(request):
+    def add_more_info_port_name(port):
+        # add more info to the port for the display
+        return "{} ({})".format(port.name_or_id,
+                                ",".join([ip['ip_address']
+                                          for ip in port['fixed_ips']]))
+    ports = []
+    print(api.neutron.port_list(request,tenant_id=request.user.tenant_id))
+    ports.extend(
+        [(port.id, add_more_info_port_name(port))
+         for port in api.neutron.port_list(request,
+                                           tenant_id=request.user.tenant_id)
+         if port.device_owner == ''])
+    ports.sort(key=lambda obj: obj[1])
+    return ports

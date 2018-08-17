@@ -81,6 +81,26 @@ def get_available(zone):
     return zone.zoneState['available']
 
 
+class QosFilterAction(tables.FilterAction):
+    def filter(self, table, data, filter_string):
+        q = filter_string.lower()
+        def comp(agent):
+            if q in agent.name_or_id.lower():
+                return True
+            return False
+
+    pass
+
+class NetworkAgentsFilterAction(tables.FilterAction):
+    def filter(self, table, agents, filter_string):
+        q = filter_string.lower()
+
+        def comp(agent):
+            if q in agent.agent_type.lower():
+                return True
+            return False
+
+        return filter(comp, agents)
 def get_agent_status(agent):
     template_name = 'admin/info/_cell_status.html'
     context = {
@@ -89,6 +109,18 @@ def get_agent_status(agent):
     }
     return template.loader.render_to_string(template_name, context)
 
+def get_network_agent_status(agent):
+    if agent.admin_state_up:
+        return _('Enabled')
+
+    return _('Disabled')
+
+
+def get_network_agent_state(agent):
+    if agent.alive:
+        return _('Up')
+
+    return _('Down')
 
 class NovaServicesTable(tables.DataTable):
     binary = tables.Column("binary", verbose_name=_('Name'))
@@ -138,31 +170,6 @@ class CinderServicesTable(tables.DataTable):
         multi_select = False
 
 
-class NetworkAgentsFilterAction(tables.FilterAction):
-    def filter(self, table, agents, filter_string):
-        q = filter_string.lower()
-
-        def comp(agent):
-            if q in agent.agent_type.lower():
-                return True
-            return False
-
-        return filter(comp, agents)
-
-
-def get_network_agent_status(agent):
-    if agent.admin_state_up:
-        return _('Enabled')
-
-    return _('Disabled')
-
-
-def get_network_agent_state(agent):
-    if agent.alive:
-        return _('Up')
-
-    return _('Down')
-
 
 class NetworkAgentsTable(tables.DataTable):
     agent_type = tables.Column('agent_type', verbose_name=_('Type'))
@@ -185,6 +192,22 @@ class NetworkAgentsTable(tables.DataTable):
         verbose_name = _("Network Agents")
         table_actions = (NetworkAgentsFilterAction,)
         multi_select = False
+
+
+class QosTable(tables.DataTable):
+    name = tables.Column('name', verbose_name=_('Name'))
+    id = tables.Column('id',verbose_name=_('ID'),link='horizon:admin:info:qos:detail')
+    description = tables.Column('description',verbose_name=_('Description'))
+    tenant_id = tables.Column('tenant_id',verbose_name=_('Project'))
+    shared = tables.Column('shared',verbose_name=_('Shared'))
+    def get_object_id(self, obj):
+        return "%s" % (obj.id)
+
+    class Meta(object):
+        name = "quality_of_service"
+        verbose_name = _("Quality of Service")
+        table_actions = (QosFilterAction,)
+        multi_select = True
 
 
 class HeatServiceFilterAction(tables.FilterAction):
@@ -227,3 +250,30 @@ class HeatServiceTable(tables.DataTable):
         verbose_name = _("Orchestration Services")
         table_actions = (HeatServiceFilterAction,)
         multi_select = False
+
+def get_policies(qos):
+    template_name = 'admin/info/qos/_policies.html'
+    context = {"qos": qos}
+    print('get policies is ok   -------------------------')
+    return template.loader.render_to_string(template_name, context)
+
+
+# add by hades 2018-8-16-
+def get_rules(qos):
+    template_name = 'admin/info/qos/_policies.html'
+    context = {
+        'qos_rules': qos.rules,
+        'code':200,
+    }
+    print(qos.rules)
+    return template.loader.render_to_string(template_name, context)
+
+class QoSPolicyTable(tables.DataTable):
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link='horizon:admin:info:qos:detail')
+    policy = tables.Column(get_rules,
+                           verbose_name=_("Policy"))
+
+    class Meta(object):
+        name = "qos"
+        verbose_name = _("QoS Policies")

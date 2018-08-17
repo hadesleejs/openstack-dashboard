@@ -18,10 +18,16 @@
 
 from django.conf.urls import patterns
 from django.conf.urls import url
+from django.conf.urls import include
 
 from openstack_dashboard.dashboards.admin.info import views
-
+from openstack_dashboard.dashboards.admin.info.qos \
+    import urls as qos_urls
 
 urlpatterns = patterns(
     'openstack_dashboard.dashboards.admin.info.views',
-    url(r'^$', views.IndexView.as_view(), name='index'))
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^create/$', views.CreateView.as_view(), name='create'),
+    url(r'^qos/', include(qos_urls, namespace='qos')),
+
+)

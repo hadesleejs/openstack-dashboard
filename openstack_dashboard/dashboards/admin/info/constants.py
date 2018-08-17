@@ -15,3 +15,5 @@
 
 INFO_TEMPLATE_NAME = 'admin/info/index.html'
 INFO_DETAIL_TEMPLATE_NAME = 'horizon/common/_detail_table.html'
+
+INFO_DETAIL_TEMPLATE_NAME_QOS = 'admin/info/qos.html'

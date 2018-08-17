@@ -29,7 +29,8 @@ from openstack_dashboard.dashboards.project.access_and_security.\
 from openstack_dashboard.dashboards.project.access_and_security.\
     security_groups import urls as sec_group_urls
 from openstack_dashboard.dashboards.project.access_and_security import views
-
+from openstack_dashboard.dashboards.project.access_and_security.\
+    qos import urls as qos_urls
 
 urlpatterns = patterns(
     '',
@@ -39,4 +40,5 @@ urlpatterns = patterns(
     url(r'floating_ips/', include(fip_urls, namespace='floating_ips')),
     url(r'security_groups/',
         include(sec_group_urls, namespace='security_groups')),
+    url(r'qos/', include(qos_urls, namespace='qos')),
 )

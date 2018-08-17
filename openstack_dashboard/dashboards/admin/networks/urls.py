@@ -27,7 +27,8 @@ from openstack_dashboard.dashboards.admin.networks.subnets \
 from openstack_dashboard.dashboards.admin.networks.subnets \
     import views as subnet_views
 from openstack_dashboard.dashboards.admin.networks import views
-
+from openstack_dashboard.dashboards.admin.networks.qos \
+    import urls as qos_urls
 
 NETWORKS = r'^(?P<network_id>[^/]+)/%s$'
 
@@ -51,4 +52,6 @@ urlpatterns = patterns(
         port_views.UpdateView.as_view(), name='editport'),
 
     url(r'^subnets/', include(subnet_urls, namespace='subnets')),
-    url(r'^ports/', include(port_urls, namespace='ports')))
+    url(r'^ports/', include(port_urls, namespace='ports')),
+    url(r'^qos/', include(qos_urls, namespace='qos')),
+)

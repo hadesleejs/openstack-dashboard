@@ -17,7 +17,8 @@ import logging
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
-
+from openstack_dashboard.dashboards.project.instances \
+    import utils as instance_utils
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
@@ -53,6 +54,9 @@ class CreatePort(forms.SelfHandlingForm):
                                    help_text=_("Device owner attached to the "
                                                "port"),
                                    required=False)
+    tenant_id = forms.ChoiceField(label=_("Tenant ID"),
+                                     required=False,
+                                     help_text=_("Tenant ID"),)
     mac_address = forms.MACAddressField(
         label=_("MAC Address"),
         required=False,
@@ -122,13 +126,17 @@ class CreatePort(forms.SelfHandlingForm):
         if api.neutron.is_extension_supported(request, 'mac-learning'):
             self.fields['mac_state'] = forms.BooleanField(
                 label=_("MAC Learning State"), initial=False, required=False)
+        tenants = instance_utils.tenant_field_data(request)
+        self.fields['tenant_id'].choices = tenants
 
     def handle(self, request, data):
         try:
             # We must specify tenant_id of the network which a subnet is
             # created for if admin user does not belong to the tenant.
             network = api.neutron.network_get(request, data['network_id'])
-            data['tenant_id'] = network.tenant_id
+            # data['tenant_id'] = network.tenant_id
+            if data['tenant_id'] == 'null':
+                data['tenant_id'] = network.tenant_id
             data['admin_state_up'] = (data['admin_state'] == 'True')
             del data['network_name']
             del data['admin_state']

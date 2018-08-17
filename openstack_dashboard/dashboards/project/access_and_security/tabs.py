@@ -36,6 +36,9 @@ from openstack_dashboard.dashboards.project.access_and_security.\
     keypairs.tables import KeypairsTable
 from openstack_dashboard.dashboards.project.access_and_security.\
     security_groups.tables import SecurityGroupsTable
+from openstack_dashboard.dashboards.project.access_and_security.\
+    qos.tables import QosTable
+from openstack_dashboard.api import neutron
 
 
 class SecurityGroupsTab(tabs.TableTab):
@@ -143,8 +146,27 @@ class APIAccessTab(tabs.TableTab):
 
         return services
 
+class QosTab(tabs.TableTab):
+    table_classes = (QosTable,)
+    name = _("Quality of Service")
+    slug = "qos"
+    template_name = "horizon/common/_detail_table.html"
+    permissions = ('openstack.services.compute',)
+
+    def get_quality_of_service_data(self):
+        try:
+            qoss = neutron.policy_list(self.request)
+        except Exception:
+            msg = _('Unable to get qos list.')
+            exceptions.handle(self.request, msg)
+            qoss = []
+        return qoss
+
+    def allowed(self, request):
+        return True
+
 
 class AccessAndSecurityTabs(tabs.TabGroup):
     slug = "access_security_tabs"
-    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab)
+    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab,QosTab)
     sticky = True

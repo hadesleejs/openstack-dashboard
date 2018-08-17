@@ -21,6 +21,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/openstack_dashboard/test/templates" />
+        <option value="$MODULE_DIR$/openstack_dashboard/dashboards/admin/info/templates" />
       </list>
     </option>
   </component>
