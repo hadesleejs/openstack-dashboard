@@ -15,19 +15,13 @@ QOS = r'^(?P<qos_id>[^/]+)/%s$'
 
 urlpatterns = patterns(
     '',
-    url(r'^create/$', views.CreateView.as_view(), name='create'),
-    url(r'^create_qos/$', qos_views.CreateQosView.as_view(), name='create_qos'),
-    url(QOS % 'update', qos_views.EditQosView.as_view(), name='edit_qos'),
+    url(r'^create/$', qos_views.CreateQosView.as_view(), name='create_qos'),
     url(QOS % 'detail', qos_views.DetailQosView.as_view(), name='detail_qos'),
-    url(QOS % 'create_rule', qos_views.CreateQosRuleView.as_view(), name='create_qos_rule'),
-    url(QOS % 'rule', qos_views.QosRuleView.as_view(), name='qos_rule'),
-    url(r'^import/$', views.ImportView.as_view(), name='import'),
-    url(r'^(?P<keypair_name>[^/]+)/download/$', views.DownloadView.as_view(),
-        name='download'),
-    url(r'^(?P<keypair_name>[^/]+)/generate/$', views.GenerateView.as_view(),
-        name='generate'),
-    url(r'^(?P<keypair_name>[^/]+)/(?P<optional>[^/]+)/generate/$',
-        views.GenerateView.as_view(), name='generate'),
-    url(r'^(?P<keypair_name>[^/]+)/$', views.DetailView.as_view(),
-        name='detail'),
+    url(r'^(?P<qos_id>[^/]+)/add_rule/$',
+        qos_views.AddRuleView.as_view(),
+        name='add_rule'),
+    url(r'^(?P<qos_id>[^/]+)/update/$',
+        qos_views.UpdateView.as_view(),
+        name='update'),
+
 )

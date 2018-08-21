@@ -146,6 +146,10 @@ class APIAccessTab(tabs.TableTab):
 
         return services
 
+
+"""add qos tab"""
+
+
 class QosTab(tabs.TableTab):
     table_classes = (QosTable,)
     name = _("Quality of Service")
@@ -168,5 +172,5 @@ class QosTab(tabs.TableTab):
 
 class AccessAndSecurityTabs(tabs.TabGroup):
     slug = "access_security_tabs"
-    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab,QosTab)
+    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab, QosTab)
     sticky = True

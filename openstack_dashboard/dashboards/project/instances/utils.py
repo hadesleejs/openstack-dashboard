@@ -201,7 +201,7 @@ def tenant_field_data(request):
         tenants = api.keystone.tenant_list(request)
         tenant = [(n.id, n.name) for n in tenants[0]]
         tenant.sort(key=lambda obj: obj[1])
-        tenant.insert(0,('null','null'))
+        tenant.insert(0,('',_("Select a project")))
     except Exception as e:
         msg = _('Failed to get tenant list {0}').format(six.text_type(e))
         exceptions.handle(request, msg)

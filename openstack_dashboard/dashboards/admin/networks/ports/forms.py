@@ -55,42 +55,23 @@ class CreatePort(forms.SelfHandlingForm):
                                                "port"),
                                    required=False)
     tenant_id = forms.ChoiceField(label=_("Tenant ID"),
-                                     required=False,
+                                     required=True,
                                      help_text=_("Tenant ID"),)
+    """add by hades 2018-8-21"""
+    """Aim t attach QoS policy ID or name to the port"""
+    qos_policy_id = forms.ChoiceField(label=_("Qos Policy"),
+                                     required=False,
+                                     help_text=_("Qos Policy"),)
     mac_address = forms.MACAddressField(
         label=_("MAC Address"),
         required=False,
         help_text=_("Specify the MAC address for the new port")
     )
-    # specify_ip = forms.ThemableChoiceField(
-    #     label=_("Specify IP address or subnet"),
-    #     help_text=_("To specify a subnet or a fixed IP, select any options."),
-    #     required=True,
-    #     choices=[('', _("Unspecified")),
-    #              ('subnet_id', _("Subnet")),
-    #              ('fixed_ip', _("Fixed IP Address"))],
-    #     widget=forms.Select(attrs={
-    #         'class': 'switchable',
-    #         'data-slug': 'specify_ip',
-    #     }))
-    # subnet_id = forms.ThemableChoiceField(
-    #     label=_("Subnet"),
-    #     required=False,
-    #     widget=forms.Select(attrs={
-    #         'class': 'switched',
-    #         'data-switch-on': 'specify_ip',
-    #         'data-specify_ip-subnet_id': _('Subnet'),
-    #     }))
     fixed_ip = forms.IPField(
         label=_("Fixed IP Address"),
         required=False,
         help_text=_("Specify the subnet IP address for the new port"),
         version=forms.IPv4 | forms.IPv6,
-        # widget=forms.TextInput(attrs={
-        #     'class': 'switched',
-        #     'data-switch-on': 'specify_ip',
-        #     'data-specify_ip-fixed_ip': _('Fixed IP Address'),
-        # })
         )
     binding__host_id = forms.CharField(
         label=_("Binding: Host"),
@@ -128,6 +109,11 @@ class CreatePort(forms.SelfHandlingForm):
                 label=_("MAC Learning State"), initial=False, required=False)
         tenants = instance_utils.tenant_field_data(request)
         self.fields['tenant_id'].choices = tenants
+        qos_choices = [('', _("Select a project"))]
+        qos = api.neutron.policy_list(request)
+        for q in qos:
+            qos_choices.append((q.id, q.name))
+        self.fields['qos_policy_id'].choices = qos_choices
 
     def handle(self, request, data):
         try:
@@ -140,18 +126,8 @@ class CreatePort(forms.SelfHandlingForm):
             data['admin_state_up'] = (data['admin_state'] == 'True')
             del data['network_name']
             del data['admin_state']
-            # print(data)
-            # print(data['specify_ip'])
-            # if data['specify_ip'] == 'subnet_id':
-            #     if data['subnet_id']:
-            #         data['fixed_ips'] = [{"subnet_id": data['subnet_id']}]
-            # elif data['specify_ip'] == 'fixed_ip':
-            #     if data['fixed_ip']:
-            #         data['fixed_ips'] = [{"ip_address": data['fixed_ip']}]
-            #         del data['subnet_id']
-            #         del data['specify_ip']
-            #         del data['fixed_ip']
-            #         print(data)
+            if data['qos_policy_id'] == '':
+                del data['qos_policy_id']
             if data['fixed_ip']:
                 data['fixed_ips'] = [{'ip_address':data['fixed_ip']}]
                 del data['fixed_ip']
@@ -188,6 +164,11 @@ class UpdatePort(project_forms.UpdatePort):
                                    help_text=_("Device owner attached to the "
                                                "port"),
                                    required=False)
+    """add by hades 2018-8-21"""
+    """Aim t attach QoS policy ID or name to the port"""
+    qos_policy_id = forms.ChoiceField(label=_("Qos Policy"),
+                                     required=False,
+                                     help_text=_("Qos Policy"),)
     binding__host_id = forms.CharField(
         label=_("Binding: Host"),
         help_text=_("The ID of the host where the port is allocated. In some "
@@ -200,6 +181,14 @@ class UpdatePort(project_forms.UpdatePort):
                                             help_text=_("Plase send {'ip_address':'ip','mac_address':'mac_address'}"))
     failure_url = 'horizon:admin:networks:detail'
 
+    def __init__(self, request,*args,**kwargs):
+        super(UpdatePort, self).__init__(request, *args, **kwargs)
+        qos_choices = [('', _("Select a project"))]
+        qos = api.neutron.policy_list(request)
+        for q in qos:
+            qos_choices.append((q.id, q.name))
+        self.fields['qos_policy_id'].choices = qos_choices
+
     def handle(self, request, data):
         try:
             LOG.debug('params = %s' % data)
@@ -211,44 +200,51 @@ class UpdatePort(project_forms.UpdatePort):
 
             if 'mac_state' in data:
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
-            if 'allowed_address_pair' in data :
-                if data['allowed_address_pair'] == '':
-                    port = api.neutron.port_update(request,
-                                                   data['port_id'],
-                                                   name=data['name'],
-                                                   admin_state_up=data['admin_state'],
-                                                   device_id=data['device_id'],
-                                                   device_owner=data['device_owner'],
-                                                   allowed_address_pairs=[],
-                                                   binding__host_id=data
-                                                   ['binding__host_id'],
-                                                   **extension_kwargs)
-                else:
-                    allowed_address_pair = data['allowed_address_pair'].split(' ')
-                    allowed_address_pairs = []
-                    for item in allowed_address_pair:
-                        allowed_address_pairs.append(eval(item.encode('ascii')))
-
-                    port = api.neutron.port_update(request,
-                                                   data['port_id'],
-                                                   name=data['name'],
-                                                   admin_state_up=data['admin_state'],
-                                                   device_id=data['device_id'],
-                                                   device_owner=data['device_owner'],
-                                                   allowed_address_pairs=allowed_address_pairs,
-                                                   binding__host_id=data
-                                                   ['binding__host_id'],
-                                                   **extension_kwargs)
+            if data['qos_policy_id'] == '':
+                del data['qos_policy_id']
             else:
-                port = api.neutron.port_update(request,
-                                               data['port_id'],
-                                               name=data['name'],
-                                               admin_state_up=data['admin_state'],
-                                               device_id=data['device_id'],
-                                               device_owner=data['device_owner'],
-                                               binding__host_id=data
-                                               ['binding__host_id'],
-                                               **extension_kwargs)
+
+                if 'allowed_address_pair' in data :
+                    if data['allowed_address_pair'] == '':
+                        port = api.neutron.port_update(request,
+                                                       data['port_id'],
+                                                       name=data['name'],
+                                                       admin_state_up=data['admin_state'],
+                                                       qos_policy_id = data['qos_policy_id'],
+                                                       device_id=data['device_id'],
+                                                       device_owner=data['device_owner'],
+                                                       allowed_address_pairs=[],
+                                                       binding__host_id=data
+                                                       ['binding__host_id'],
+                                                       **extension_kwargs)
+                    else:
+                        allowed_address_pair = data['allowed_address_pair'].split(' ')
+                        allowed_address_pairs = []
+                        for item in allowed_address_pair:
+                            allowed_address_pairs.append(eval(item.encode('ascii')))
+
+                        port = api.neutron.port_update(request,
+                                                       data['port_id'],
+                                                       name=data['name'],
+                                                       admin_state_up=data['admin_state'],
+                                                       device_id=data['device_id'],
+                                                       qos_policy_id = data['qos_policy_id'],
+                                                       device_owner=data['device_owner'],
+                                                       allowed_address_pairs=allowed_address_pairs,
+                                                       binding__host_id=data
+                                                       ['binding__host_id'],
+                                                       **extension_kwargs)
+                else:
+                    port = api.neutron.port_update(request,
+                                                   data['port_id'],
+                                                   name=data['name'],
+                                                   admin_state_up=data['admin_state'],
+                                                   device_id=data['device_id'],
+                                                   qos_policy_id = data['qos_policy_id'],
+                                                   device_owner=data['device_owner'],
+                                                   binding__host_id=data
+                                                   ['binding__host_id'],
+                                                   **extension_kwargs)
             msg = _('Port %s was successfully updated.') % data['port_id']
             LOG.debug(msg)
             messages.success(request, msg)

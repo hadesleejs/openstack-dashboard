@@ -1828,7 +1828,7 @@ def portforwarding_delete(request, portforwarding_id):
 class QoSPolicy(NeutronAPIDictWrapper):
     """Wrapper for neutron QoS Policy."""
 
-    _attrs = ['id', 'description', 'type', 'policies']
+    _attrs = ['id', 'description', 'type', 'policies','name']
 
     def to_dict(self):
         return self._apidict
@@ -1880,18 +1880,21 @@ def policy_get(request, policy_id, **kwargs):
 
 def update_qos_bandwidth(request,rule_id,policy_id,**kwargs):
     try:
-        policy = neutronclient(request).update_bandwidth_limit_rule(rule_id,policy_id,**kwargs)
+        body = {'bandwidth_limit_rule':kwargs}
+        policy = neutronclient(request).update_bandwidth_limit_rule(rule_id,policy_id,body=body)
         return True
     except Exception:
         return False
-    pass
 
-def create_qos_bandwidth(request,policy_id,**kwargs):
+
+def create_qos_bandwidth(request, policy_id, **kwargs):
     try:
-        policy = neutronclient(request).create_bandwidth_limit_rule(policy_id,**kwargs)
+        body = {'bandwidth_limit_rule':kwargs}
+        policy = neutronclient(request).create_bandwidth_limit_rule(policy_id,body=body)
         return True
     except Exception:
         return False
+
 
 def delete_qos_bandwidth(request,policy_id,rule,**kwargs):
     try:

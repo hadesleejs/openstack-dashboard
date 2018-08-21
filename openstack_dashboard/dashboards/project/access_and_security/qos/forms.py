@@ -12,11 +12,12 @@ from django.core.urlresolvers import reverse
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
-from horizon.utils import validators as utils_validators
 
 from openstack_dashboard import api
 
 LOG = logging.getLogger(__name__)
+
+"""create qos form"""
 
 
 class QoSPolicyForm(forms.SelfHandlingForm):
@@ -36,101 +37,7 @@ class QoSPolicyForm(forms.SelfHandlingForm):
         return params
 
 
-class QosBase(forms.SelfHandlingForm):
-    """Base class to handle creation and update of qos.
-
-    Children classes must define two attributes:
-
-    .. attribute:: success_message
-
-        A success message containing the placeholder %s,
-        which will be replaced by the group name.
-
-    .. attribute:: error_message
-
-        An error message containing the placeholder %s,
-        which will be replaced by the error message.
-    """
-    name = forms.CharField(label=_("Name"),
-                           max_length=255,
-                           validators=[
-                               utils_validators.validate_printable_ascii])
-    description = forms.CharField(label=_("Description"),
-                                  required=False,
-                                  widget=forms.Textarea(attrs={'rows': 4}))
-
-    def _call_network_api(self, request, data):
-        """Call the underlying network API: Nova-network or Neutron.
-
-        Used in children classes to create or update a group.
-        """
-        raise NotImplementedError()
-
-    def handle(self, request, data):
-        try:
-            sg = self._call_network_api(request, data)
-            messages.success(request, self.success_message % sg.name)
-            return sg
-        except Exception as e:
-            redirect = reverse("horizon:project:access_and_security:index")
-            error_msg = self.error_message % e
-            exceptions.handle(request, error_msg, redirect=redirect)
-
-
-class UpdateQos(QosBase):
-    success_message = _('Successfully updated security group: %s')
-    error_message = _('Unable to update security group: %s')
-
-    id = forms.CharField(widget=forms.HiddenInput())
-
-    def _call_network_api(self, request, data):
-        return api.network.security_group_update(request,
-                                                 data['id'],
-                                                 data['name'],
-                                                 data['description'])
-
-
-class AddRule(forms.SelfHandlingForm):
-    id = forms.CharField(widget=forms.HiddenInput())
-    rule_id = forms.CharField(widget=forms.HiddenInput())
-    max_burst_kbps = forms.IntegerField(label=_("max_burst_kbps"),
-                                   required=False,
-                                   help_text=_("Enter a value for max_burst_kbps "),)
-    max_kbps = forms.IntegerField(label=_("max_kbps"),
-                                   required=False,
-                                   help_text=_("Enter a value for max_kbps "),)
-
-    def __init__(self, request, *args, **kwargs):
-        super(AddRule, self).__init__(request, *args, **kwargs)
-
-    def handle(self, request, data):
-        print(data)
-        try:
-            max_burst_kbps = data['max_burst_kbps']
-            max_kbps = data['max_kbps']
-            qos_id = data['id']
-            data_send = {
-                'max_burst_kbps': max_burst_kbps,
-                'max_kbps': max_kbps,
-            }
-            try:
-                if data['rule_id']:
-                    rule = data['rule_id']
-                    api.neutron.update_qos_bandwidth(rule,qos_id,data_send)
-                else:
-                    api.neutron.create_qos_bandwidth(qos_id,data_send)
-                msg = (_('QoS  %s was updated successful.') %
-                       data['id'])
-            except Exception:
-
-                msg = (_('QoS  %s was updated failure.') %
-                       data['id'])
-            LOG.debug(msg)
-            messages.success(request, msg)
-        except Exception:
-            redirect = reverse('horizon:project:access_and_security:index')
-            msg = _('Failed to update QoS  %s') % data['id']
-            exceptions.handle(request, msg, redirect=redirect)
+"""create qos"""
 
 
 class CreateQoSPolicy(QoSPolicyForm):
@@ -167,43 +74,51 @@ class CreateQoSPolicy(QoSPolicyForm):
             exceptions.handle(request, msg, redirect=redirect)
 
 
-class RuleForm(forms.SelfHandlingForm):
+"""add rule form"""
+
+
+class AddRule(forms.SelfHandlingForm):
     id = forms.CharField(widget=forms.HiddenInput())
-    rule_id = forms.CharField(widget=forms.HiddenInput())
+    rule = forms.CharField(widget=forms.HiddenInput())
     max_burst_kbps = forms.IntegerField(label=_("max_burst_kbps"),
-                                   required=False,
+                                   required=True,
                                    help_text=_("Enter a value for max_burst_kbps "),)
     max_kbps = forms.IntegerField(label=_("max_kbps"),
-                                   required=False,
+                                   required=True,
                                    help_text=_("Enter a value for max_kbps "),)
 
-    def __init__(self, request, *args, **kwargs):
-        super(RuleForm, self).__init__(request, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        sg_list = kwargs.pop('sg_list', [])
+        super(AddRule, self).__init__(*args, **kwargs)
 
     def handle(self, request, data):
+        redirect = reverse("horizon:project:access_and_security:"
+                           "qos:detail_qos", args={data['id']:data['id']})
         try:
-            max_burst_kbps = data['max_burst_kbps']
-            max_kbps = data['max_kbps']
-            qos_id = data['id']
-            data_send = {
-                'max_burst_kbps': max_burst_kbps,
-                'max_kbps': max_kbps,
+            params = {
+                'max_burst_kbps': data['max_burst_kbps'],
+                'max_kbps': data['max_kbps'],
             }
-            try:
-                if data['rule_id']:
-                    rule = data['rule_id']
-                    api.neutron.update_qos_bandwidth(rule,qos_id,data_send)
-                else:
-                    api.neutron.create_qos_bandwidth(qos_id,data_send)
-                msg = (_('QoS  %s was updated successful.') %
-                       data['id'])
-            except Exception:
-
-                msg = (_('QoS  %s was updated failure.') %
-                       data['id'])
-            LOG.debug(msg)
-            messages.success(request, msg)
+            if data['rule'] == 'no':
+                rule = api.neutron.create_qos_bandwidth(request,data['id'],**params)
+            else:
+                api.neutron.delete_qos_bandwidth(request, data['id'], data['rule'])
+                rule = api.neutron.create_qos_bandwidth(request, data['id'], **params)
+            messages.success(request,
+                             _('Successfully added rule: %s')
+                             % data['id'])
+            return rule
+        except exceptions.Conflict as error:
+            exceptions.handle(request, error, redirect=redirect)
         except Exception:
-            redirect = reverse('horizon:project:access_and_security:index')
-            msg = _('Failed to update QoS  %s') % data['id']
-            exceptions.handle(request, msg, redirect=redirect)
+            exceptions.handle(request,
+                              _('Unable to add rule to qos:%s')%(data['id']),
+                              redirect=redirect)
+
+
+"""update rule form"""
+"""the feature is completed. 2018/8/21"""
+
+
+class UpdateGroup(forms.SelfHandlingForm):
+    pass

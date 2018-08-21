@@ -43,6 +43,9 @@ class CreateQosView(forms.ModalFormView):
         "horizon:project:access_and_security:index")
 
 
+"""detail qos"""
+
+
 class DetailQosView(tables.DataTableView):
     table_class = qos_tables.RulesTable
     template_name = 'project/access_and_security/qos/detail.html'
@@ -70,59 +73,27 @@ class DetailQosView(tables.DataTableView):
         context["qos"] = self._get_data()
         return context
 
-class EditQosView(forms.ModalFormView):
-    form_class = qos_forms.UpdateQos
-    form_id = "update_qos_form"
-    modal_header = _("Edit Quality of Service")
-    modal_id = "update_qos_modal"
-    template_name = 'project/access_and_security/security_groups/update.html'
-    submit_label = _("Edit Quality of Service")
-    submit_url = "horizon:project:access_and_security:security_groups:update"
-    success_url = reverse_lazy('horizon:project:access_and_security:index')
-    page_title = _("Edit Quality of Service")
 
-    @memoized.memoized_method
-    def get_object(self):
-        sg_id = filters.get_int_or_uuid(self.kwargs['security_group_id'])
-        try:
-            return api.network.security_group_get(self.request, sg_id)
-        except Exception:
-            msg = _('Unable to retrieve security group.')
-            url = reverse('horizon:project:access_and_security:index')
-            exceptions.handle(self.request, msg, redirect=url)
-
-    def get_context_data(self, **kwargs):
-        context = super(EditQosView, self).get_context_data(**kwargs)
-        context["security_group"] = self.get_object()
-        args = (self.kwargs['security_group_id'],)
-        context['submit_url'] = reverse(self.submit_url, args=args)
-        return context
-
-    def get_initial(self):
-        security_group = self.get_object()
-        return {'id': self.kwargs['security_group_id'],
-                'name': security_group.name,
-                'description': security_group.description}
+"""add rule"""
 
 
-class QosRuleView(forms.ModalFormView):
+class AddRuleView(forms.ModalFormView):
     form_class = qos_forms.AddRule
-    form_id = "create_qos_rule_form"
+    form_id = "create_security_group_rule_form"
     modal_header = _("Add Rule")
-    modal_id = "create_qos_rule_modal"
+    modal_id = "create_security_group_rule_modal"
     template_name = 'project/access_and_security/qos/add_rule.html'
     submit_label = _("Add")
-    submit_url = "horizon:project:access_and_security:qos:qos_rule"
+    submit_url = "horizon:project:access_and_security:qos:add_rule"
     url = "horizon:project:access_and_security:qos:detail_qos"
     page_title = _("Add Rule")
-    cancel_url = reverse_lazy(
-        "horizon:project:access_and_security:index")
+
     def get_success_url(self):
         sg_id = self.kwargs['qos_id']
         return reverse(self.url, args=[sg_id])
 
     def get_context_data(self, **kwargs):
-        context = super(QosRuleView, self).get_context_data(**kwargs)
+        context = super(AddRuleView, self).get_context_data(**kwargs)
         context["qos_id"] = self.kwargs['qos_id']
         args = (self.kwargs['qos_id'],)
         context['submit_url'] = reverse(self.submit_url, args=args)
@@ -131,23 +102,36 @@ class QosRuleView(forms.ModalFormView):
 
     def get_initial(self):
         qos = api.neutron.policy_get(self.request,self.kwargs['qos_id'])
-        if qos.rules == []:
-            return {'id': self.kwargs['qos_id'],}
+        if qos.rules:
+            rule_id = qos.rules[0]['id']
+            return {'id': self.kwargs['qos_id'],'rule':rule_id}
         else:
-            return {'id': self.kwargs['qos_id'],'max_burst_kbps':qos.rules[0]['max_burst_kbps'],
-                    'rule_id':qos.rules[0]['id'],'max_kbps':qos.rules[0]['max_kbps']}
+            return {'id': self.kwargs['qos_id'],'rule':'no'}
+
+    def get_form_kwargs(self):
+        kwargs = super(AddRuleView, self).get_form_kwargs()
+
+        try:
+            groups = api.network.security_group_list(self.request)
+        except Exception:
+            groups = []
+            exceptions.handle(self.request,
+                              _("Unable to retrieve security groups."))
+
+        security_groups = []
+        for group in groups:
+            if group.id == self.kwargs['qos_id']:
+                security_groups.append((group.id,
+                                        _("%s (current)") % group.name))
+            else:
+                security_groups.append((group.id, group.name))
+        kwargs['sg_list'] = security_groups
+        return kwargs
 
 
+"""updated rule """
+"""the feature is completed. 2018/8/21"""
 
-class CreateQosRuleView(forms.ModalFormView):
-    form_class = qos_forms.RuleForm
-    form_id = "create_qos_rule"
-    modal_header = _("Create qos rule")
-    # template_name = 'project/access_and_security/qos/create.html'
-    # submit_label = _("Create Quality of Service")
-    # submit_url = reverse_lazy(
-    #     "horizon:project:access_and_security:qos:create_qos")
-    success_url = 'horizon:project:access_and_security:index'
-    # page_title = _("Create Quality of Service")
-    # cancel_url = reverse_lazy(
-    #     "horizon:project:access_and_security:index")
+
+class UpdateView(forms.ModalFormView):
+    pass
