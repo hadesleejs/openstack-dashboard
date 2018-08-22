@@ -168,6 +168,15 @@ class ManageRules(policy.PolicyTargetMixin, tables.LinkAction):
         return True
 
 
+"""edit qos """
+
+
+class EditQos(tables.DataTable):
+    name = tables.Column('name', verbose_name=_('Name'))
+    description = tables.Column('description',verbose_name=_('Description'))
+    tenant_id = tables.Column('tenant_id',verbose_name=_('Project'))
+    shared = tables.Column('shared',verbose_name=_('Shared'))
+
 """qos table"""
 
 
@@ -185,4 +194,4 @@ class QosTable(tables.DataTable):
         name = "quality_of_service"
         verbose_name = _("Quality of Service")
         table_actions = (CreateQos, DeleteQos, QosFilterAction,)
-        row_actions = (ManageRules,)
+        row_actions = (ManageRules,EditQos)

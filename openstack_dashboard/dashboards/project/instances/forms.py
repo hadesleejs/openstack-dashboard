@@ -188,7 +188,7 @@ class AttachInterface(forms.SelfHandlingForm):
             'data-switch-on':'network_type',
             'data-network_type-network':_('Network'),
         }))
-    port= forms.ChoiceField(
+    port = forms.ChoiceField(
         label=_("Port"),
         required=False,
         help_text='choice a port',
@@ -206,7 +206,6 @@ class AttachInterface(forms.SelfHandlingForm):
             'data-switch-on': 'network_type',
             'data-network_type-network': _('Fixed IP'),
         }))
-
 
     def __init__(self, request, *args, **kwargs):
         super(AttachInterface, self).__init__(request, *args, **kwargs)

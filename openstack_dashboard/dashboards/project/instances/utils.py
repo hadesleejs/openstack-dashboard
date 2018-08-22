@@ -208,6 +208,7 @@ def tenant_field_data(request):
 
     return tenant
 
+
 def port_field_tenant_data(request):
     def add_more_info_port_name(port):
         # add more info to the port for the display
@@ -215,7 +216,6 @@ def port_field_tenant_data(request):
                                 ",".join([ip['ip_address']
                                           for ip in port['fixed_ips']]))
     ports = []
-    print(api.neutron.port_list(request,tenant_id=request.user.tenant_id))
     ports.extend(
         [(port.id, add_more_info_port_name(port))
          for port in api.neutron.port_list(request,
