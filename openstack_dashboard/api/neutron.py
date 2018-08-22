@@ -33,6 +33,8 @@ from django.utils.translation import ugettext_lazy as _
 from neutronclient.common import exceptions as neutron_exc
 from neutronclient.v2_0 import client as neutron_client
 import six
+from django.core.urlresolvers import reverse  # noqa
+
 
 from horizon import exceptions
 from horizon import messages
@@ -1861,14 +1863,18 @@ def policy_update(request,policy_id,**kwargs):
         policy_id, **kwargs).get('policy')
     return QoSPolicy(policy)
 
+
 @profiler.trace
 def policy_delete(request,policy_id,**kwargs):
     """Delete Qos policy for a given policy id"""
     try:
-        policy = neutronclient(request).delete_qos_policy(policy_id,**kwargs)
+        neutronclient(request).delete_qos_policy(policy_id,**kwargs)
         return True
-    except Exception:
-        return False
+    except Exception,e:
+        redirect = reverse("horizon:admin:info:"
+                           "qos:detail", args={policy_id: policy_id})
+        msg = e
+        exceptions.handle(request, msg, redirect=redirect)
 
 @profiler.trace
 def policy_get(request, policy_id, **kwargs):

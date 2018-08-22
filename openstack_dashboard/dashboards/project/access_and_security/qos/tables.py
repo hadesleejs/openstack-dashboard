@@ -25,7 +25,7 @@ LOG = logging.getLogger(__name__)
 class CreateRule(tables.LinkAction):
     name = "add_rule"
     verbose_name = _("Add Rule")
-    url = "horizon:project:access_and_security:qos:qos_rule"
+    url = "horizon:admin:access_and_security:qos:add_rule"
     classes = ("ajax-modal",)
     icon = "plus"
 

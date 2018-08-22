@@ -24,7 +24,7 @@ from openstack_dashboard.api import neutron
 from openstack_dashboard.api import nova
 from openstack_dashboard.dashboards.admin.info import constants
 from openstack_dashboard.dashboards.admin.info import tables
-
+from openstack_dashboard.dashboards.admin.info.qos import tables as qos_tables
 
 class ServicesTab(tabs.TableTab):
     table_classes = (tables.ServicesTable,)
@@ -81,28 +81,24 @@ class CinderServicesTab(tabs.TableTab):
 
 
 class QosTab(tabs.TableTab):
-    table_classes = (tables.QosTable,)
-    name = tables.QosTable.Meta.verbose_name
-    slug = tables.QosTable.Meta.name
-    template_name = constants.INFO_DETAIL_TEMPLATE_NAME_QOS
-
-    def allowed(self, request):
-        try:
-            return (base.is_service_enabled(request, 'network') and
-                    neutron.is_extension_supported(request, 'agent'))
-        except Exception:
-            exceptions.handle(request, _('Unable to get network agents info.'))
-            return False
+    table_classes = (qos_tables.QosTable,)
+    name = _("Quality of Service")
+    slug = "qos"
+    template_name = "horizon/common/_detail_table.html"
+    permissions = ('openstack.services.compute',)
 
     def get_quality_of_service_data(self):
         try:
-            agents = neutron.policy_list(self.tab_group.request)
+            qoss = neutron.policy_list(self.request)
         except Exception:
             msg = _('Unable to get qos list.')
-            exceptions.check_message(["Connection", "refused"], msg)
             exceptions.handle(self.request, msg)
-            agents = []
-        return agents
+            qoss = []
+        return qoss
+
+    def allowed(self, request):
+        return True
+
 class NetworkAgentsTab(tabs.TableTab):
     table_classes = (tables.NetworkAgentsTable,)
     name = tables.NetworkAgentsTable.Meta.verbose_name
@@ -155,5 +151,5 @@ class HeatServiceTab(tabs.TableTab):
 class SystemInfoTabs(tabs.TabGroup):
     slug = "system_info"
     tabs = (ServicesTab, NovaServicesTab, CinderServicesTab,
-            NetworkAgentsTab, HeatServiceTab,QosTab)
+            NetworkAgentsTab, HeatServiceTab, QosTab)
     sticky = True

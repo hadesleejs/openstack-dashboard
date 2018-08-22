@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n breadcrumb_nav %}
-{% block title %}{% trans "QoS Policy Detail"%}{% endblock %}
+
+{% block title %}{% trans "Manage Qos Rules" %}{% endblock %}
+
+{% block page_header %}
+  <div class='page-header'>
+    {% breadcrumb_nav %}
+  </div>
+{% endblock %}
 
 {% block main %}
-
-  {% include "admin/info/qos/_detail.html" %}
+<div class="row">
+  <div class="col-sm-12">
+      {{ table.render }}
+  </div>
+</div>
 {% endblock %}

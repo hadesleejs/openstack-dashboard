@@ -1,8 +1,0 @@
-{% for rule in qos.rules %}
-    <h4>{{ rule.type }}</h4>
-    <ul>
-    {% for name, value in rule.items %}
-      <li>{{ name }}: {{ value }}</li>
-    {% endfor %}
-    </ul>
-{% endfor %}

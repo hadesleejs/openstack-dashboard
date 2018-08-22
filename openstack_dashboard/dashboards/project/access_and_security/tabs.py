@@ -172,5 +172,5 @@ class QosTab(tabs.TableTab):
 
 class AccessAndSecurityTabs(tabs.TabGroup):
     slug = "access_security_tabs"
-    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab, QosTab)
+    tabs = (SecurityGroupsTab, KeypairsTab, FloatingIPsTab, APIAccessTab, )
     sticky = True

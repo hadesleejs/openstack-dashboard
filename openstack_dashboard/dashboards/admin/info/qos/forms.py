@@ -1,74 +1,23 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
+#!/usr/bin/env python
+# coding=utf-8
+# author=hades
+# @Time    : 2018/8/17 9:24
 
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may
-#    not use this file except in compliance with the License. You may obtain
-#    a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-#    Unless required by applicable law or agreed to in writing, software
-#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-#    License for the specific language governing permissions and limitations
-#    under the License.
-#
-# Copyright (c) 2013-2017 Wind River Systems, Inc.
-#
-
-
+import re
 import logging
 
-from django.core.urlresolvers import reverse  # noqa
-from django.utils.translation import ugettext_lazy as _  # noqa
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
+
 from openstack_dashboard import api
 
 LOG = logging.getLogger(__name__)
 
-class QoSRuleForm(forms.SelfHandlingForm):
-    max_width = forms.CharField(max_length=255,
-                           label=_("Max width"),
-                           required=False)
-    max_kbps = forms.CharField(max_length=255,
-                                  label=_("Max kbps"),
-                                  required=True)
-    max_burst_kbps = forms.CharField(max_length=255,
-                                  label=_("Max burts kbps"),
-                                  required=True)
-
-    def _get_params(self, request, data):
-        params = {'name': data['name'],
-                  'description': data['description'],
-                  }
-        return params
-
-
-class CreateRule(QoSRuleForm):
-    id = forms.CharField(widget=forms.HiddenInput)
-
-    @classmethod
-    def _instantiate(cls, request, *args, **kwargs):
-        return cls(request, *args, **kwargs)
-
-    def handle(self, request, data):
-        try:
-            params = self._get_params(request, data)
-            params['qos_id'] = request.get
-            qos = api.neutron.policy_update(request,data['id'], **params)
-            msg = (_('QoS policy %s was successfully updated.') %
-                   data['description'])
-            LOG.debug(msg)
-            messages.success(request, msg)
-            return qos
-        except Exception:
-            redirect = reverse('horizon:admin:info:qos:detail')
-            msg = _('Failed to update QoS policy %s') % data['name']
-            exceptions.handle(request, msg, redirect=redirect)
-    pass
+"""create qos form"""
 
 
 class QoSPolicyForm(forms.SelfHandlingForm):
@@ -80,6 +29,7 @@ class QoSPolicyForm(forms.SelfHandlingForm):
                                   required=False)
     shared = forms.BooleanField(label=_("Shared"),
                                 initial=False, required=False)
+
     def _get_params(self, request, data):
         params = {'name': data['name'],
                   'description': data['description'],
@@ -88,6 +38,7 @@ class QoSPolicyForm(forms.SelfHandlingForm):
         return params
 
 
+"""create qos"""
 
 
 class CreateQoSPolicy(QoSPolicyForm):
@@ -124,23 +75,51 @@ class CreateQoSPolicy(QoSPolicyForm):
             exceptions.handle(request, msg, redirect=redirect)
 
 
-class UpdateQosPolicy(QoSPolicyForm):
-    id = forms.CharField(widget=forms.HiddenInput)
+"""add rule form"""
 
-    failure_url = 'horizon:admin:networks:index'
+
+class AddRule(forms.SelfHandlingForm):
+    id = forms.CharField(widget=forms.HiddenInput())
+    rule = forms.CharField(widget=forms.HiddenInput())
+    max_burst_kbps = forms.IntegerField(label=_("max_burst_kbps"),
+                                   required=True,
+                                   help_text=_("Enter a value for max_burst_kbps "),)
+    max_kbps = forms.IntegerField(label=_("max_kbps"),
+                                   required=True,
+                                   help_text=_("Enter a value for max_kbps "),)
+
+    def __init__(self, *args, **kwargs):
+        sg_list = kwargs.pop('sg_list', [])
+        super(AddRule, self).__init__(*args, **kwargs)
 
     def handle(self, request, data):
+        redirect = reverse("horizon:admin:info:"
+                           "qos:detail", args={data['id']:data['id']})
         try:
-            params = self._get_params(request, data)
-            msg = (_('QoS policy %s was successfully updated.') %
-                   data['description'])
-            qos = api.neutron.qos_update(
-                request, data['id'], **params)
-            LOG.debug(msg)
-            messages.success(request, msg)
-            return qos
+            params = {
+                'max_burst_kbps': data['max_burst_kbps'],
+                'max_kbps': data['max_kbps'],
+            }
+            if data['rule'] == 'no':
+                rule = api.neutron.create_qos_bandwidth(request,data['id'],**params)
+            else:
+                api.neutron.delete_qos_bandwidth(request, data['id'], data['rule'])
+                rule = api.neutron.create_qos_bandwidth(request, data['id'], **params)
+            messages.success(request,
+                             _('Successfully added rule: %s')
+                             % data['id'])
+            return rule
+        except exceptions.Conflict as error:
+            exceptions.handle(request, error, redirect=redirect)
         except Exception:
-            msg = _('Failed to update QoS policy %s') % data['name']
-            LOG.info(msg)
-            redirect = reverse(self.failure_url)
-            exceptions.handle(request, msg, redirect=redirect)
+            exceptions.handle(request,
+                              _('Unable to add rule to qos:%s')%(data['id']),
+                              redirect=redirect)
+
+
+"""update rule form"""
+"""the feature is completed. 2018/8/21"""
+
+
+class UpdateGroup(forms.SelfHandlingForm):
+    pass
