@@ -1859,8 +1859,9 @@ def policy_list(request, **kwargs):
 
 def policy_update(request,policy_id,**kwargs):
     """ update Qos"""
+    body = {'policy': kwargs}
     policy = neutronclient(request).update_qos_policy(
-        policy_id, **kwargs).get('policy')
+        policy_id, body=body).get('policy')
     return QoSPolicy(policy)
 
 

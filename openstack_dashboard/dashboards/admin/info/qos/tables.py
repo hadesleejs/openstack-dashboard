@@ -171,11 +171,12 @@ class ManageRules(policy.PolicyTargetMixin, tables.LinkAction):
 """edit qos """
 
 
-class EditQos(tables.DataTable):
-    name = tables.Column('name', verbose_name=_('Name'))
-    description = tables.Column('description',verbose_name=_('Description'))
-    tenant_id = tables.Column('tenant_id',verbose_name=_('Project'))
-    shared = tables.Column('shared',verbose_name=_('Shared'))
+class EditQos(tables.LinkAction):
+    name = "edit"
+    verbose_name = _("Edit QoS Policy")
+    url = "horizon:admin:info:qos:edit"
+    classes = ("ajax-modal", "btn-edit")
+
 
 """qos table"""
 

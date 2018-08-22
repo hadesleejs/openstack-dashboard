@@ -15,6 +15,7 @@ urlpatterns = patterns(
     '',
     url(r'^create/$', qos_views.CreateQosView.as_view(), name='create'),
     url(QOS % 'detail', qos_views.DetailQosView.as_view(), name='detail'),
+    url(QOS % 'edit', qos_views.EditQosView.as_view(), name='edit'),
     url(r'^(?P<qos_id>[^/]+)/add_rule/$',
         qos_views.AddRuleView.as_view(),
         name='add_rule'),

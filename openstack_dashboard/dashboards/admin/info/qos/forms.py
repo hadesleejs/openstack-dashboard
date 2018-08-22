@@ -123,3 +123,28 @@ class AddRule(forms.SelfHandlingForm):
 
 class UpdateGroup(forms.SelfHandlingForm):
     pass
+
+
+"""edit qos"""
+
+
+class UpdateQosPolicy(QoSPolicyForm):
+    id = forms.CharField(widget=forms.HiddenInput)
+
+    failure_url = 'horizon:admin:info:index'
+
+    def handle(self, request, data):
+        try:
+            params = self._get_params(request, data)
+            msg = (_('QoS policy %s was successfully updated.') %
+                   data['description'])
+            qos = api.neutron.policy_update(
+                request, data['id'], **params)
+            LOG.debug(msg)
+            messages.success(request, msg)
+            return qos
+        except Exception:
+            msg = _('Failed to update QoS policy %s') % data['name']
+            LOG.info(msg)
+            redirect = reverse(self.failure_url)
+            exceptions.handle(request, msg, redirect=redirect)

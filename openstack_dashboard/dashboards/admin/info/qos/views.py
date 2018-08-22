@@ -14,7 +14,7 @@ from horizon import tables
 from openstack_dashboard import api
 from openstack_dashboard.utils import filters
 
-from openstack_dashboard.dashboards.project.access_and_security.qos import  forms as qos_forms
+from openstack_dashboard.dashboards.admin.info.qos import forms as qos_forms
 from openstack_dashboard.dashboards.admin.info.qos import tables as qos_tables
 
 
@@ -61,6 +61,39 @@ class DetailQosView(tables.DataTableView):
         context = super(DetailQosView, self).get_context_data(**kwargs)
         context["qos"] = self._get_data()
         return context
+
+
+"""edit qos"""
+
+
+class EditQosView(forms.ModalFormView):
+    form_class = qos_forms.UpdateQosPolicy
+    template_name = 'admin/info/qos/update.html'
+    success_url = reverse_lazy('horizon:admin:info:index')
+
+    def get_context_data(self, **kwargs):
+        context = super(EditQosView, self).get_context_data(**kwargs)
+        context["qos_id"] = self.kwargs['qos_id']
+        return context
+
+    def _get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            qos_id = self.kwargs['qos_id']
+            try:
+                self._object = api.neutron.policy_get(self.request, qos_id)
+            except Exception:
+                redirect = self.success_url
+                msg = _('Unable to retrieve QoS policy details.')
+                exceptions.handle(self.request, msg, redirect=redirect)
+        return self._object
+
+    def get_initial(self):
+        qos = self._get_object()
+        data = {'id': qos['id'],
+                'tenant_id': qos['tenant_id'],
+                'name': qos['name'],
+                'description': qos['description']}
+        return data
 
 
 """add rule"""
