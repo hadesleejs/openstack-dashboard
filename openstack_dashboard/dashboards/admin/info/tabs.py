@@ -26,6 +26,7 @@ from openstack_dashboard.dashboards.admin.info import constants
 from openstack_dashboard.dashboards.admin.info import tables
 from openstack_dashboard.dashboards.admin.info.qos import tables as qos_tables
 
+
 class ServicesTab(tabs.TableTab):
     table_classes = (tables.ServicesTable,)
     name = tables.ServicesTable.Meta.verbose_name
@@ -98,6 +99,7 @@ class QosTab(tabs.TableTab):
 
     def allowed(self, request):
         return True
+
 
 class NetworkAgentsTab(tabs.TableTab):
     table_classes = (tables.NetworkAgentsTable,)

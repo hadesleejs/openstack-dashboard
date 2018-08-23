@@ -996,6 +996,14 @@ def aggregate_set_metadata(request, aggregate_id, metadata):
     return novaclient(request).aggregates.set_metadata(aggregate_id, metadata)
 
 
+class QoSPolicy(Server):
+    """Wrapper for neutron QoS Policy."""
+
+    _attrs = ['id', 'name']
+
+    def to_dict(self):
+        return self._apidict
+
 def host_list(request):
     return novaclient(request).hosts.list()
 

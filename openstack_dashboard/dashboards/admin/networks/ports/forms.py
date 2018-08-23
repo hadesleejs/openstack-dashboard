@@ -47,7 +47,7 @@ class CreatePort(forms.SelfHandlingForm):
     admin_state = forms.ChoiceField(choices=[(True, _('UP')),
                                              (False, _('DOWN'))],
                                     label=_("Admin State"))
-    device_id = forms.CharField(max_length=100, label=_("Device ID"),
+    device_id = forms.ChoiceField(label=_("Device ID"),
                                 help_text=_("Device ID attached to the port"),
                                 required=False)
     device_owner = forms.CharField(max_length=100, label=_("Device Owner"),
@@ -114,6 +114,11 @@ class CreatePort(forms.SelfHandlingForm):
         for q in qos:
             qos_choices.append((q.id, q.name))
         self.fields['qos_policy_id'].choices = qos_choices
+        device_choices = [('', _("Select a project"))]
+        devices = api.nova.server_list(request,all_tenants=True)[0]
+        for dev in devices:
+            device_choices.append((dev.id, dev.name))
+        self.fields['device_id'].choices = device_choices
 
     def handle(self, request, data):
         try:
@@ -157,9 +162,9 @@ class CreatePort(forms.SelfHandlingForm):
 
 class UpdatePort(project_forms.UpdatePort):
     # tenant_id = forms.CharField(widget=forms.HiddenInput())
-    device_id = forms.CharField(max_length=100, label=_("Device ID"),
-                                help_text=_("Device ID attached to the port"),
-                                required=False)
+    # device_id = forms.ChoiceField(label=_("Device ID"),
+    #                             help_text=_("Device ID attached to the port"),
+    #                             required=False)
     device_owner = forms.CharField(max_length=100, label=_("Device Owner"),
                                    help_text=_("Device owner attached to the "
                                                "port"),
@@ -188,7 +193,11 @@ class UpdatePort(project_forms.UpdatePort):
         for q in qos:
             qos_choices.append((q.id, q.name))
         self.fields['qos_policy_id'].choices = qos_choices
-
+        # device_choices = [('', _("Select a project"))]
+        # devices = api.nova.server_list(request,all_tenants=True)[0]
+        # for dev in devices:
+        #     device_choices.append((dev.id, dev.name))
+        # self.fields['device_id'].choices = device_choices
     def handle(self, request, data):
         try:
             LOG.debug('params = %s' % data)
@@ -201,15 +210,15 @@ class UpdatePort(project_forms.UpdatePort):
             if 'mac_state' in data:
                 extension_kwargs['mac_learning_enabled'] = data['mac_state']
             if data['qos_policy_id'] == '':
-                del data['qos_policy_id']
                 if 'allowed_address_pair' in data:
                     if data['allowed_address_pair'] == '':
                         port = api.neutron.port_update(request,
                                                        data['port_id'],
                                                        name=data['name'],
                                                        admin_state_up=data['admin_state'],
-                                                       device_id=data['device_id'],
+                                                       # device_id=data['device_id'],
                                                        device_owner=data['device_owner'],
+                                                       qos_policy_id =None,
                                                        allowed_address_pairs=[],
                                                        binding__host_id=data
                                                        ['binding__host_id'],
@@ -224,8 +233,9 @@ class UpdatePort(project_forms.UpdatePort):
                                                        data['port_id'],
                                                        name=data['name'],
                                                        admin_state_up=data['admin_state'],
-                                                       device_id=data['device_id'],
+                                                       # device_id=data['device_id'],
                                                        device_owner=data['device_owner'],
+                                                       qos_policy_id = None,
                                                        allowed_address_pairs=allowed_address_pairs,
                                                        binding__host_id=data
                                                        ['binding__host_id'],
@@ -236,6 +246,7 @@ class UpdatePort(project_forms.UpdatePort):
                                                    name=data['name'],
                                                    admin_state_up=data['admin_state'],
                                                    device_id=data['device_id'],
+                                                   qos_policy_id=None,
                                                    device_owner=data['device_owner'],
                                                    binding__host_id=data
                                                    ['binding__host_id'],
@@ -249,7 +260,7 @@ class UpdatePort(project_forms.UpdatePort):
                                                        name=data['name'],
                                                        admin_state_up=data['admin_state'],
                                                        qos_policy_id = data['qos_policy_id'],
-                                                       device_id=data['device_id'],
+                                                       # device_id=data['device_id'],
                                                        device_owner=data['device_owner'],
                                                        allowed_address_pairs=[],
                                                        binding__host_id=data
@@ -277,7 +288,7 @@ class UpdatePort(project_forms.UpdatePort):
                                                    data['port_id'],
                                                    name=data['name'],
                                                    admin_state_up=data['admin_state'],
-                                                   device_id=data['device_id'],
+                                                   # device_id=data['device_id'],
                                                    qos_policy_id = data['qos_policy_id'],
                                                    device_owner=data['device_owner'],
                                                    binding__host_id=data
